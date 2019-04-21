@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{evenement.naam}}
+    </mat-card-title>
+    <mat-card-subtitle>{{evenement.beschrijving}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h3 mat-subheader>Wanneer?</h3>
+    <p>{{evenement.startdatum | date : "dd/MM/yyyy"}} - {{evenement.einddatum | date : "dd/MM/yyyy"}}</p>
+    <p>Aantal dagen: {{evenement.nrOfDays}}</p>
+  </mat-card-content>
+</mat-card>
+
+
+
