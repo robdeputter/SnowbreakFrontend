@@ -1,4 +1,5 @@
 export class Evenement {
+  
     constructor(
         private _id: Number,
         private _naam: string,
@@ -30,6 +31,10 @@ export class Evenement {
             const rec = new Evenement(json.id, json.naam, json.beschrijving,json.startDatum,json.eindDatum,
                 json.nrOfDays/*json.gebied*/);
             return rec;
+          }
+
+          toJSON(): any {
+            throw new Error("Method not implemented.");
           }
     
 }

@@ -1,21 +1,36 @@
 import { Injectable } from '@angular/core';
-import { EVENEMENTEN } from '../mock-evenements';
 import { Evenement } from '../modules/evenement.module';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.prod';
+import { Observable, of } from 'rxjs';
+import {Subject} from "rxjs";
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EvenementDataService {
-  private _evenementen = EVENEMENTEN;
+  public loadingError$ = new Subject<string>();
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  get evenementen(): Evenement[]{
-    return this._evenementen;
+  get evenementen$(): Observable<Evenement[]> {
+    return this.http.get(`${environment.apiUrl}/Evenement/`).pipe(
+      catchError(error => {
+        this.loadingError$.next(error.statusText);
+        return of();
+      }),
+      tap((x: any[]) => {
+        for (const y of x) {
+          console.log(y);
+        }
+      }),
+      map((list: any[]): Evenement[] => list.map(Evenement.fromJSON))
+    );
   }
 
   addNewEvenement(evenement : Evenement){
-    this._evenementen.push(evenement);
+    return this.http.post(`${environment.apiUrl}/Evenement/`, 
+      evenement.toJSON());
   }
 }
 
