@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-title>Filter evenementen</mat-card-title>
+  <mat-form-field>
+    <input matInput (keyup)='filterEvenement$.next($event.target.value)' 
+      type='text' 
+      placeholder='filter evenementnaam'>
+  </mat-form-field>  
+</mat-card>
+<div fxLayout="column" fxLayoutGap="2%">
+    <div
+      fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutGap="0.5%"
+      fxLayoutAlign="start"
+    >
+      <div 
+        class="evenement"
+        *ngFor="let evenement of (evenementen$ | async | evenementFilter: filterEvenementNaam)"
+        fxFlex="0 0 calc(25%-0.5%)"
+        fxFlex.xs="100%"
+      >
+        <app-evenement [evenement]= "evenement"></app-evenement>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

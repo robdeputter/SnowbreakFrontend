@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Evenement } from '../modules/evenement.module';
+import { Evenement } from '../models/evenement.model';
 
 @Pipe({
   name: 'evenementFilter'

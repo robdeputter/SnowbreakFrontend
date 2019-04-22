@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Evenement } from '../modules/evenement.module';
+import { Evenement } from '../models/evenement.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { Observable, of } from 'rxjs';

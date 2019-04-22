@@ -1,4 +1,4 @@
-import { Evenement } from './modules/evenement.module';
+import { Evenement } from './models/evenement.model';
 
 const JsonRecipes = [
   {

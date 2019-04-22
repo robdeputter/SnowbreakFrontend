@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>Nieuw evenement</mat-card-title>
+  <mat-card-content>
+    <form [formGroup] = "evenement" (ngSubmit) = "onSubmit()">
+        <mat-form-field>
+            <input matInput  aria-label="Naam" placeholder="Naam" type="text"  formControlName = "naam" required #newEvenementNaam />
+            <mat-error *ngIf="evenement.get('naam')['errors'] && evenement.get('naam').touched">
+              {{ getErrorMessage(evenement.get('name')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Beschrijving" placeholder="Beschrijving" type="text" formControlName = "beschrijving" required #newEvenementBeschrijving />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Startdatum" [matDatepicker]="pickerStartdatum" placeholder="startdatum" formControlName = "startdatum" required #newEvenementStartdatum>
+            <mat-datepicker-toggle matSuffix [for]="pickerStartdatum"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStartdatum></mat-datepicker>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Einddatum" [matDatepicker]="pickerEinddatum" placeholder="Einddatum" formControlName = "einddatum" required #newEvenementEinddatum>
+            <mat-datepicker-toggle matSuffix [for]="pickerEinddatum"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEinddatum></mat-datepicker>
+          </mat-form-field>
+          <br>
+          <button type="submit" (click)="addEvenement(newEvenementNaam,newEvenementBeschrijving,newEvenementStartdatum, newEvenementEinddatum)"  [disabled]= "!evenement.valid" mat-raised-button>
+              Voeg evenement toe
+          </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
