@@ -1,13 +1,13 @@
 <div fxLayout="column" fxLayoutGap="2%">
 <mat-card>
-  <mat-card-title>Filter evenementen</mat-card-title>
+  <mat-card-title>Filter gebieden</mat-card-title>
   <mat-form-field>
-    <input matInput (keyup)='filterEvenement$.next($event.target.value)' 
+    <input matInput (keyup)='filterGebied$.next($event.target.value)' 
       type='text' 
-      placeholder='filter evenementnaam'>
+      placeholder='filter gebiednaam'>
   </mat-form-field>  
 </mat-card>
-<div *ngIf="evenementen$ as evenementen; else loadingOrError">
+<div *ngIf="gebieden$ as gebieden; else loadingOrError">
     <div
       fxLayout="row wrap"
       fxLayout.xs="column"
@@ -16,11 +16,11 @@
     >
       <div 
         class="evenement"
-        *ngFor="let evenement of (evenementen | async | evenementFilter: filterEvenementNaam)"
+        *ngFor="let gebied of (gebieden$ | async | gebiedFilter: filterGebiedNaam)"
         fxFlex="0 0 calc(25%-0.5%)"
         fxFlex.xs="100%"
       >
-        <app-evenement [evenement]= "evenement"></app-evenement>
+        <app-gebied [gebied]= "gebied"></app-gebied>
       </div>
     </div>
   </div>
@@ -39,10 +39,5 @@
     </mat-card>
   </ng-template>
 </div>
-
-
-
-
-
 
 

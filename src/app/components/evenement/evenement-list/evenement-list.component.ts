@@ -14,6 +14,7 @@ export class EvenementListComponent implements OnInit {
   public filterEvenement$ = new Subject<string>();
   private _fetchEvenementen$: Observable<Evenement[]> = this._evenementDataService.evenementen$;
 
+  public loadingError$ = this._evenementDataService.loadingError$;
   constructor(private _evenementDataService: EvenementDataService) {
     this.filterEvenement$
       .pipe(
