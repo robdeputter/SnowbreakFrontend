@@ -1,3 +1,5 @@
+import { Gebied } from './gebied.model';
+
 export class Evenement {
   
     constructor(
@@ -6,7 +8,8 @@ export class Evenement {
         private _beschrijving: string,
         private _startDatum: Date,
         private _eindDatum: Date,
-        private _nrOfDays: Number
+        private _nrOfDays: Number,
+        private _gebied: Gebied
         //private _gebied: Gebied
     ) { }
 
@@ -17,7 +20,7 @@ export class Evenement {
         get startdatum(){return this._startDatum;}
         get einddatum(){return this._eindDatum;}
         get nrOfDays(){return this._nrOfDays;}
-        //get gebied(){return this._gebied;}
+        get gebied(){return this._gebied;}
 
         set id(id: Number){this._id = id;}
         set naam(naam: string){this._naam = naam;}
@@ -25,11 +28,11 @@ export class Evenement {
         set startdatum(startdatum: Date){this._startDatum = startdatum;}
         set einddatum(einddatum: Date){this._eindDatum = einddatum;}
         set nrOfDays(nrOfDays: Number){this._nrOfDays = nrOfDays;}
-        //set gebied(gebied: Gebied){this._gebied = gebied;}
+        set gebied(gebied: Gebied){this._gebied = gebied;}
 
         static fromJSON(json: any): Evenement {
             const rec = new Evenement(json.id, json.naam, json.beschrijving,json.startDatum,json.eindDatum,
-                json.nrOfDays/*json.gebied*/);
+                json.nrOfDays, json.gebied);
             return rec;
           }
 

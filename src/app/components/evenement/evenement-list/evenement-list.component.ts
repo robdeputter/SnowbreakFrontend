@@ -21,7 +21,7 @@ export class EvenementListComponent implements OnInit {
         distinctUntilChanged(),
         debounceTime(400),
         map(val => val.toLowerCase()),
-        filter(val => !val.startsWith('s'))
+        filter(val => !val.startsWith(' '))
       ).subscribe(
         val => this.filterEvenementNaam = val);
   }

@@ -34,7 +34,7 @@ export class Gebied {
     //set gebied(gebied: Gebied){this._gebied = gebied;}
 
     static fromJSON(json: any): Gebied {
-        const rec = new Gebied(json.id, json.naam, json.land,  null, json.lengteGraad
+        const rec = new Gebied(json.id, json.naam, json.land, json.continent, json.lengteGraad
             , json.breedtegraad, json.aantalKmPiste, json.hoogteGebied);
         return rec;
     }

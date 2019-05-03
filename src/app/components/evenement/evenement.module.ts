@@ -9,12 +9,14 @@ import { EvenementListComponent } from './evenement-list/evenement-list.componen
 import { MaterialModule } from '../../material/material.module';
 
 
+
 @NgModule({
     imports: [
       HttpClientModule,
       CommonModule,
       ReactiveFormsModule,
       MaterialModule
+      
     ],
     declarations: [
       EvenementComponent,

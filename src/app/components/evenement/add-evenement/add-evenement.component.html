@@ -14,7 +14,7 @@
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input matInput aria-label="Startdatum" [matDatepicker]="pickerStartdatum" placeholder="startdatum" formControlName = "startdatum" required #newEvenementStartdatum>
+            <input matInput aria-label="Startdatum" [matDatepicker]="pickerStartdatum" placeholder="Startdatum" formControlName = "startdatum" required #newEvenementStartdatum>
             <mat-datepicker-toggle matSuffix [for]="pickerStartdatum"></mat-datepicker-toggle>
             <mat-datepicker #pickerStartdatum></mat-datepicker>
           </mat-form-field>
@@ -25,7 +25,18 @@
             <mat-datepicker #pickerEinddatum></mat-datepicker>
           </mat-form-field>
           <br>
-          <button type="submit" (click)="addEvenement(newEvenementNaam,newEvenementBeschrijving,newEvenementStartdatum, newEvenementEinddatum)"  [disabled]= "!evenement.valid" mat-raised-button>
+          <mat-form-field>
+              <mat-label>Gebied</mat-label>
+              <mat-select required #newEvenementGebiedId >
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let gebied of gebieden" [value]="gebied.id">
+                  {{gebied.naam}} ({{gebied.land}})
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <p>You selected: {{newEvenementGebiedId.value}}</p>
+            <br>
+          <button type="submit" (click)="addEvenement(newEvenementNaam,newEvenementBeschrijving,newEvenementStartdatum, newEvenementEinddatum, newEvenementGebiedId)"  [disabled]= "!evenement.valid" mat-raised-button>
               Voeg evenement toe
           </button>
     </form>

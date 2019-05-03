@@ -26,6 +26,12 @@ export class GebiedDataService {
       }),
       map((list: any[]): Gebied[] => list.map(Gebied.fromJSON))
     );
+
+  }
+  getGebied$(id): Observable<Gebied> {
+    return this.http
+      .get(`${environment.apiUrl}/Gebied/${id}`)
+      .pipe(map((rec: any): Gebied => Gebied.fromJSON(rec)));
   }
 
   addNewEvenement(gebied : Gebied){
