@@ -23,6 +23,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Snowbreak</span>
+      
+      <span style="align-items: right" *ngIf="(loggedInUser$ | async) as user"
+        >{{ user }}
+        <button (click)="logout()" mat-flat-button>
+          logout
+        </button>
+      </span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

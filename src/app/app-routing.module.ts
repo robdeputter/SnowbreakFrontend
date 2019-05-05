@@ -5,14 +5,23 @@ import { AddEvenementComponent } from './components/evenement/add-evenement/add-
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GebiedListComponent } from './components/gebied/gebied-list/gebied-list.component';
 import { AddGebiedComponent } from './components/gebied/add-gebied/add-gebied.component';
+import { AuthGuard } from './components/user/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'evenement-list', component: EvenementListComponent },
-  { path: 'add-evenement', component: AddEvenementComponent },
+  {
+    path: 'add-evenement',
+    canActivate: [AuthGuard],
+    component: AddEvenementComponent
+  },
   { path: 'gebied-list', component: GebiedListComponent },
-  { path: 'add-gebied', component: AddGebiedComponent },
-  { path: '', redirectTo: 'evenement-list', pathMatch: 'full'},
-  { path: '**', component: PageNotFoundComponent}
+  {
+    path: 'add-gebied',
+    canActivate: [AuthGuard],
+    component: AddGebiedComponent
+  },
+  { path: '', redirectTo: 'evenement-list', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -20,7 +29,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  
+
   exports: [
     RouterModule
   ]
