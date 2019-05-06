@@ -5,6 +5,7 @@ import { EvenementDataService } from 'src/app/data-services/evenement-data.servi
 import { Gebied } from 'src/app/models/gebied.model';
 import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { async } from 'rxjs/internal/scheduler/async';
+import { EvenementDTO } from 'src/app/models/evenementDTO.model';
 
 @Component({
   selector: 'app-add-evenement',
@@ -12,10 +13,13 @@ import { async } from 'rxjs/internal/scheduler/async';
   styleUrls: ['./add-evenement.component.css']
 })
 export class AddEvenementComponent implements OnInit {
-  @Output() public newEvenement = new EventEmitter<Evenement>();
+  @Output() public newEvenement = new EventEmitter<EvenementDTO>();
   public evenement: FormGroup;
   public gebieden : Gebied[];
-  constructor(private fb: FormBuilder, private _evenementDataService: EvenementDataService, private _gebiedDataService : GebiedDataService) {
+
+  constructor(private fb: FormBuilder, 
+    private _evenementDataService: EvenementDataService,
+    private _gebiedDataService : GebiedDataService) {
       _gebiedDataService.gebieden$.subscribe(res => this.gebieden = res);
    }
 
@@ -26,7 +30,7 @@ export class AddEvenementComponent implements OnInit {
       beschrijving: [""],
       startdatum: [""],
       einddatum: [""],
-      gebiedId: [""]
+      gebiedId : [null]
     });
   }
 
@@ -40,24 +44,21 @@ export class AddEvenementComponent implements OnInit {
   }
 
   onSubmit(){
-    var observableGebied = this._gebiedDataService.getGebied$(this.evenement.value.gebiedId);
-    let gebied : Gebied;
-    observableGebied.subscribe(res => gebied = res);
-    this._evenementDataService.addNewEvenement(new Evenement(0,this.evenement.value.naam,this.evenement.value.beschrijving, this.evenement.value.startdatum,this.evenement.value.einddatum, this.evenement.value.einddatum - this.evenement.value.startdatum, gebied)).subscribe();
+    console.log(this.evenement.value.gebiedId);
+    this._evenementDataService.addNewEvenement(new EvenementDTO(this.evenement.value.naam,this.evenement.value.beschrijving, 
+      new Date(this.evenement.value.startdatum),new Date(this.evenement.value.einddatum), this.evenement.value.gebiedId)).subscribe();
   }
 
   addEvenement(evenementNaam: HTMLInputElement, evenementBeschrijving: HTMLInputElement,
-    evenementStartdatum: HTMLInputElement, evenementEinddatum: HTMLInputElement, evenementGebiedId: HTMLOptionElement) {
-    let gebied : Gebied;
-    console.log(this._gebiedDataService.getGebied$(parseInt(evenementGebiedId.value)));
-    this._gebiedDataService.getGebied$(parseInt(evenementGebiedId.value)).subscribe(res => gebied = res);
-    const evenement = new Evenement(0, evenementNaam.value, evenementBeschrijving.value, evenementStartdatum.valueAsDate, evenementEinddatum.valueAsDate, evenementEinddatum.valueAsDate - evenementStartdatum.valueAsDate, gebied);
+    evenementStartdatum: HTMLInputElement, evenementEinddatum: HTMLInputElement,
+    evenementGebiedId: HTMLOptionElement){
+
+    const evenement = new EvenementDTO(evenementNaam.value,
+      evenementBeschrijving.value,
+      new Date(evenementStartdatum.value), 
+      new Date(evenementEinddatum.value),
+      parseInt(evenementGebiedId.value));
     
-    console.log(evenementNaam.value);
-    console.log(evenementBeschrijving.value);
-    console.log(evenementStartdatum.value);
-    console.log(evenementEinddatum.value);
-    console.log(gebied);
     this.newEvenement.emit(evenement);
   }
 

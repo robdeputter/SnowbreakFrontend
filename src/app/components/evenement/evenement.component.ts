@@ -4,6 +4,9 @@ import { EvenementDataService } from 'src/app/data-services/evenement-data.servi
 import { Subject, Observable } from "rxjs";
 import { distinctUntilChanged, debounceTime,
   map, filter } from 'rxjs/operators';
+import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
+import { Gebied } from 'src/app/models/gebied.model';
+import { EvenementDTO } from 'src/app/models/evenementDTO.model';
 
 @Component({
   selector: 'app-evenement',
@@ -18,7 +21,7 @@ export class EvenementComponent implements OnInit {
 
   private _fetchEvenementen$: Observable<Evenement[]> = this._evenementDataService.evenementen$;
 
-  constructor(private _evenementDataService: EvenementDataService) {
+  constructor(private _evenementDataService: EvenementDataService, private _gebiedDataService : GebiedDataService) {
 
     this.filterEvenement$
     .pipe(
@@ -28,6 +31,7 @@ export class EvenementComponent implements OnInit {
       filter(val => !val.startsWith('s'))
     ).subscribe(
       val => this.filterEvenementNaam = val);
+
   }
   applyFilter(filter : string){
     this.filterEvenementNaam = filter;
@@ -35,11 +39,12 @@ export class EvenementComponent implements OnInit {
   get evenementen$(): Observable<Evenement[]> {
     return this._fetchEvenementen$;
   }
-  addEvenement(evenement : Evenement){
+  addEvenement(evenement : EvenementDTO){
     this._evenementDataService.addNewEvenement(evenement).subscribe();
   }
 
   ngOnInit() {
+    
   }
 
 }

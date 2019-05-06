@@ -1,7 +1,6 @@
-export class Gebied {
+export class GebiedDTO {
 
     constructor(
-        private _id: Number,
         private _naam: string,
         private _land: string,
         private _contintent: Number,
@@ -13,7 +12,7 @@ export class Gebied {
     ) { }
 
     // [...] other getters
-    get id() { return this._id; }
+    
     get naam() { return this._naam; }
     get land() { return this._land; }
     get continent() { return this._contintent; }
@@ -23,7 +22,6 @@ export class Gebied {
     get hoogteGebied() { return this._hoogteGebied; }
     
 
-    set id(id: Number) { this._id = id; }
     set naam(naam: string) { this._naam = naam; }
     set land(land: string) { this._land = land; }
     set continent(continent: Number) { this._contintent = continent; }
@@ -31,16 +29,17 @@ export class Gebied {
     set breedtegraad(breedtegraad: string) { this._breedtegraad = breedtegraad; }
     set aantalKmPiste(aantalKmPiste: Number) { this._aantalKmPiste = aantalKmPiste; }
     set hoogteGebied(hoogteGebied: Number) { this._hoogteGebied = hoogteGebied }
-    
-
-    static fromJSON(json: any): Gebied {
-        const rec = new Gebied(json.id, json.naam, json.land, json.continent, json.lengteGraad
-            , json.breedtegraad, json.aantalKmPiste, json.hoogteGebied);
-        return rec;
-    }
 
     toJSON(): any {
-        throw new Error("Method not implemented.");
+        return {
+            naam : this.naam,
+            land : this.land,
+            lengtegraad : this.lengtegraad,
+            breedtegraad : this.breedtegraad,
+            aantalKmPiste : this.aantalKmPiste,
+            hoogteGebied : this.hoogteGebied,
+            continent : this.continent
+        }
     }
 
 }

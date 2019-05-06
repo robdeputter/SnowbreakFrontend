@@ -4,8 +4,8 @@
     <form [formGroup] = "evenement" (ngSubmit) = "onSubmit()">
         <mat-form-field>
             <input matInput  aria-label="Naam" placeholder="Naam" type="text"  formControlName = "naam" required #newEvenementNaam />
-            <mat-error *ngIf="evenement.get('naam')['errors'] && evenement.get('naam').touched">
-              {{ getErrorMessage(evenement.get('name')['errors']) }}
+            <mat-error *ngIf="(evenement).get('naam')['errors'] && evenement.get('naam').touched">
+              {{ getErrorMessage(evenement.get('naam')['errors']) }}
             </mat-error>
           </mat-form-field>
           <br>
@@ -27,7 +27,7 @@
           <br>
           <mat-form-field>
               <mat-label>Gebied</mat-label>
-              <mat-select required #newEvenementGebiedId >
+              <mat-select required formControlName = "gebiedId" #newEvenementGebiedId >
                 <mat-option>--</mat-option>
                 <mat-option *ngFor="let gebied of gebieden" [value]="gebied.id">
                   {{gebied.naam}} ({{gebied.land}})

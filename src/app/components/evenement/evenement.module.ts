@@ -16,7 +16,6 @@ import { MaterialModule } from '../../material/material.module';
       CommonModule,
       ReactiveFormsModule,
       MaterialModule
-      
     ],
     declarations: [
       EvenementComponent,

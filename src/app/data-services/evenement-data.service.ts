@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Observable, of } from 'rxjs';
 import {Subject} from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
+import { EvenementDTO } from '../models/evenementDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class EvenementDataService {
     );
   }
 
-  addNewEvenement(evenement : Evenement){
+  addNewEvenement(evenement : EvenementDTO){
     return this.http.post(`${environment.apiUrl}/Evenement/`, 
       evenement.toJSON());
   }

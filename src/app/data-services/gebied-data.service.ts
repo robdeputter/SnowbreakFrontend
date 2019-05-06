@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Gebied } from '../models/gebied.model';
 import { environment } from 'src/environments/environment.prod';
 import { catchError, tap, map } from 'rxjs/operators';
+import { GebiedDTO } from '../models/gebiedDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,13 @@ export class GebiedDataService {
     );
 
   }
-  getGebied$(id): Observable<Gebied> {
+  getGebied$(id : Number): Observable<Gebied> {
     return this.http
       .get(`${environment.apiUrl}/Gebied/${id}`)
       .pipe(map((rec: any): Gebied => Gebied.fromJSON(rec)));
   }
 
-  addNewEvenement(gebied : Gebied){
+  addNewGebied(gebied : GebiedDTO){
     return this.http.post(`${environment.apiUrl}/Gebied/`, 
       gebied.toJSON());
   }

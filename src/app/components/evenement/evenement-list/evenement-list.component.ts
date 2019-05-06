@@ -3,6 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { Evenement } from 'src/app/models/evenement.model';
 import { EvenementDataService } from 'src/app/data-services/evenement-data.service';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
+import { EvenementDTO } from 'src/app/models/evenementDTO.model';
 
 @Component({
   selector: 'app-evenement-list',
@@ -32,7 +33,7 @@ export class EvenementListComponent implements OnInit {
   get evenementen$(): Observable<Evenement[]> {
     return this._fetchEvenementen$;
   }
-  addEvenement(evenement: Evenement) {
+  addEvenement(evenement: EvenementDTO) {
     this._evenementDataService.addNewEvenement(evenement).subscribe();
   }
 

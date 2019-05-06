@@ -1,3 +1,53 @@
-<p>
-  add-gebied works!
-</p>
+<mat-card>
+  <mat-card-title>Nieuw gebied</mat-card-title>
+  <mat-card-content>
+    <form [formGroup] = "gebied" (ngSubmit) = "onSubmit()">
+        <mat-form-field>
+            <input matInput  aria-label="Naam" placeholder="Naam" type="text"  formControlName = "naam" required #newGebiedNaam />
+            <mat-error *ngIf="(gebied).get('naam')['errors'] && gebied.get('naam').touched">
+              {{ getErrorMessage(gebied.get('naam')['errors']) }}
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Land" placeholder="Land" type="text" formControlName = "land" required #newGebiedLand />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Lengtegraad" placeholder="Lengtegraad" type="text" formControlName = "lengtegraad" required #newGebiedLengtegraad />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="Breedtegraad" placeholder="Breedtegraad" type="text" formControlName = "breedtegraad" required #newGebiedBreedtegraad />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="AantalKmPiste" placeholder="Aantal km piste" type="number" formControlName = "aantalKmPiste" required #newGebiedAantalKmPiste />
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput aria-label="HoogteGebied" placeholder="Hoogte gebied" type="number" formControlName = "hoogteGebied" required #newGebiedHoogteGebied />
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+              <mat-label>Continent</mat-label>
+              <mat-select required formControlName = "continentId" #newContinentId >
+                <mat-option>--</mat-option>
+                <mat-option [value]="0">Noord-Amerika</mat-option>
+                <mat-option [value]="1">Zuid-Amerika</mat-option>
+                <mat-option [value]="2">Europa</mat-option>
+                <mat-option [value]="3">Azië</mat-option>
+                <mat-option [value]="4">Wereld</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+            <p>You selected: {{newContinentId.value}}</p>
+            <br>
+          <button type="submit" (click)="addGebied(newGebiedNaam,newGebiedLand,newGebiedLengtegraad, newGebiedBreedtegraad,newGebiedAantalKmPiste,newGebiedHoogteGebied, newContinentId)"  [disabled]= "!gebied.valid" mat-raised-button>
+              Voeg gebied toe
+          </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+

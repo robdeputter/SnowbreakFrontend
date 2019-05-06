@@ -27,4 +27,4 @@ import { GebiedListComponent } from './gebied-list/gebied-list.component';
       ]
   })
 
-export class EvenementModule { }
+export class GebiedModule { }
