@@ -19,3 +19,10 @@
 .fill-space {
   flex: 1 1 auto;
 }
+
+.buttons{
+  border-radius: 2px;
+  border-style: solid;
+  border-color: white;
+  margin: 3px;
+}

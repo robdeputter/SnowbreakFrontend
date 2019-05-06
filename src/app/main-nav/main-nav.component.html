@@ -24,14 +24,18 @@
       </button>
       <span>Snowbreak</span>
       <span class="fill-space"></span>
-      <span style="align-items: right" *ngIf="(loggedInUser$ | async) as user"
+      <span style="align-items: right" *ngIf="(loggedInUser$ | async) as user; else loggedOut"
         >{{ user }}
-        
         <button (click)="logout()" mat-flat-button>
           logout
         </button>
-
       </span>
+      <ng-template #loggedOut>
+        <div>
+          <a class="buttons" mat-button [routerLink]="['register']">Register</a>
+          <a class="buttons" mat-button [routerLink]="['login']">Login</a>
+        </div>
+      </ng-template>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

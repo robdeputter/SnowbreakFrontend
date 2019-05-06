@@ -17,7 +17,7 @@
       <div 
         class="evenement"
         *ngFor="let evenement of (evenementen | async | evenementFilter: filterEvenementNaam)"
-        fxFlex="0 0 calc(25%-0.5%)"
+        fxFlex="0 1 75%"
         fxFlex.xs="100%"
       >
         <app-evenement [evenement]= "evenement"></app-evenement>

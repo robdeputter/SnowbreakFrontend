@@ -36,14 +36,5 @@ export class Evenement {
         return rec;
     }
 
-    toJSON(): any {
-        return {
-            naam: this._naam,
-            beschrijving: this._beschrijving,
-            startDatum: this._startDatum,
-            eindDatum: this._eindDatum,
-            gebiedId: this._gebied.id
-        };
-    }
 
 }
