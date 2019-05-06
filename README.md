@@ -1,6 +1,6 @@
 # SnowbreakFrontend
 
-Snowbreak is een webapplicatie dat de mogelijkheid biedt om een overzicht te krijgen over de verschillende snowboard -en skievents. Gebieden en evenementen kunnen alleen worden toegevoegd door een administrator.
+Snowbreak is een webapplicatie dat de mogelijkheid biedt om een overzicht te krijgen over de verschillende ski -en snowboardevents. Gebieden en evenementen kunnen alleen worden toegevoegd door een administrator.
 
 ## Development server
 
