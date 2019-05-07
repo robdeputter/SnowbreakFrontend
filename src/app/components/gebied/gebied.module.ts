@@ -7,6 +7,7 @@ import { GebiedComponent } from './gebied.component';
 import { AddGebiedComponent } from './add-gebied/add-gebied.component';
 import { GebiedFilterPipe } from 'src/app/filters/gebied-filter.pipe';
 import { GebiedListComponent } from './gebied-list/gebied-list.component';
+import { GebiedDetailComponent } from './gebied-detail/gebied-detail.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { GebiedListComponent } from './gebied-list/gebied-list.component';
       GebiedComponent,
       AddGebiedComponent,
       GebiedFilterPipe,
-      GebiedListComponent],
+      GebiedListComponent,
+      GebiedDetailComponent],
       
       exports: [
         MaterialModule

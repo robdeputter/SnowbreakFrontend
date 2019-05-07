@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GebiedListComponent } from './components/gebied/gebied-list/gebied-list.component';
 import { AddGebiedComponent } from './components/gebied/add-gebied/add-gebied.component';
 import { AuthGuard } from './components/user/auth.guard';
+import { GebiedDetailComponent } from './components/gebied/gebied-detail/gebied-detail.component';
 
 const appRoutes: Routes = [
   { path: 'evenement-list', component: EvenementListComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
     component: AddGebiedComponent
   },
+  {path: 'evenement-list/gebied-detail/:id', component: GebiedDetailComponent},
   { path: '', redirectTo: 'evenement-list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

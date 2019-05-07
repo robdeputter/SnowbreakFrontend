@@ -10,7 +10,8 @@
       <mat-card-subtitle>Wanneer?</mat-card-subtitle>
       <p>{{evenement.startdatum | date : "dd/MM/yyyy"}} - {{evenement.einddatum | date : "dd/MM/yyyy"}}</p>
       <p>Aantal dagen: {{evenement.nrOfDays}}</p>
-      <p>Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}</p>
+        <a mat-button [routerLink]="['gebied-detail',evenement.gebied.id]">Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}</a>
+      
   </mat-card-content>
 </mat-card>
       

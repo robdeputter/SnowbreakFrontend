@@ -7,6 +7,7 @@ import { AddEvenementComponent } from './add-evenement/add-evenement.component';
 import { EvenementFilterPipe } from '../../filters/evenement-filter.pipe';
 import { EvenementListComponent } from './evenement-list/evenement-list.component';
 import { MaterialModule } from '../../material/material.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,7 +16,8 @@ import { MaterialModule } from '../../material/material.module';
       HttpClientModule,
       CommonModule,
       ReactiveFormsModule,
-      MaterialModule
+      MaterialModule,
+      RouterModule
     ],
     declarations: [
       EvenementComponent,
