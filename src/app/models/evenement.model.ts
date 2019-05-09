@@ -35,6 +35,4 @@ export class Evenement {
             json.nrOfDays, json.gebied);
         return rec;
     }
-
-
 }

@@ -7,6 +7,7 @@ import { GebiedListComponent } from './components/gebied/gebied-list/gebied-list
 import { AddGebiedComponent } from './components/gebied/add-gebied/add-gebied.component';
 import { AuthGuard } from './components/user/auth.guard';
 import { GebiedDetailComponent } from './components/gebied/gebied-detail/gebied-detail.component';
+import { RankingListComponent } from './components/ranking/ranking-list/ranking-list.component';
 
 const appRoutes: Routes = [
   { path: 'evenement-list', component: EvenementListComponent },
@@ -22,8 +23,9 @@ const appRoutes: Routes = [
     component: AddGebiedComponent
   },
   {path: 'evenement-list/gebied-detail/:id', component: GebiedDetailComponent},
+  {path: 'ranking-list', component: RankingListComponent},
   { path: '', redirectTo: 'evenement-list', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

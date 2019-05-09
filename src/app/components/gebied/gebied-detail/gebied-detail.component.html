@@ -1,4 +1,5 @@
-
+<div *ngIf="(gebied$ | async) as gebied">
+  <div class= "container">
       <mat-card>
           <mat-card-header>
             <mat-card-title>{{gebied.naam}} - {{gebied.land}}</mat-card-title>
@@ -8,6 +9,7 @@
             <p>Aantal km piste: {{gebied.aantalKmPiste}}</p>
             <p>Hoogte gebied: {{gebied.hoogteGebied}}</p>
           </mat-card-content>
-        </mat-card>
-
+      </mat-card>
+    </div>
+</div>
 

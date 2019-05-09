@@ -1,0 +1,50 @@
+<div fxLayout="column" fxLayoutGap="2%">
+    <mat-card>
+      <mat-card-title>Filter rankings</mat-card-title>
+      <mat-form-field>
+        <input matInput (keyup)='filterRanking$.next($event.target.value)' 
+          type='text' 
+          placeholder='filter rankingnaam'>
+      </mat-form-field>  
+    </mat-card>
+    <div *ngIf="rankings$ as rankings; else loadingOrError">
+        <div
+          fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutGap="0.5%"
+          fxLayoutAlign="start"
+        >
+          <div 
+            class="ranking"
+            *ngFor="let ranking of (rankings | async | rankingFilter : filterRankingNaam)"
+            fxFlex="0 1 75%"
+            fxFlex.xs="100%"
+            
+          >
+            <app-ranking [ranking]= "ranking"></app-ranking>
+          </div>
+        </div>
+      </div>
+      <ng-template #loadingOrError>
+        <mat-card>
+          <mat-error
+            data-cy="appError"
+            *ngIf="(loadingError$ | async) as errorMessage; else loading"
+          >
+            Error loading the recipe list: {{ errorMessage }}. <br />Please try
+            again later.
+          </mat-error>
+          <ng-template #loading>
+            <mat-spinner></mat-spinner>
+          </ng-template>
+        </mat-card>
+      </ng-template>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    

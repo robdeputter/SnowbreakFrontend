@@ -11,7 +11,7 @@ import { GebiedDTO } from '../models/gebiedDTO.model';
 })
 export class GebiedDataService {
   public loadingError$ = new Subject<string>();
-
+  public _gebiedId : Number;
   constructor(private http: HttpClient) { }
 
   get gebieden$(): Observable<Gebied[]> {
@@ -29,9 +29,9 @@ export class GebiedDataService {
     );
 
   }
-  getGebied$(id : Number): Observable<Gebied> {
+  get Gebied$(): Observable<Gebied> {
     return this.http
-      .get(`${environment.apiUrl}/Gebied/${id}`)
+      .get(`${environment.apiUrl}/Gebied/${this._gebiedId}`)
       .pipe(map((rec: any): Gebied => Gebied.fromJSON(rec)));
   }
 

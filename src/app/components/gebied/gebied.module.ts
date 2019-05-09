@@ -9,7 +9,6 @@ import { GebiedFilterPipe } from 'src/app/filters/gebied-filter.pipe';
 import { GebiedListComponent } from './gebied-list/gebied-list.component';
 import { GebiedDetailComponent } from './gebied-detail/gebied-detail.component';
 
-
 @NgModule({
     imports: [
       HttpClientModule,

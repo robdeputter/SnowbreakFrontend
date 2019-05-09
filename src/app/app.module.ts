@@ -10,6 +10,7 @@ import { httpInterceptorProviders } from './interceptors/index';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { GebiedModule } from './components/gebied/gebied.module';
+import { RankingModule } from './components/ranking/ranking.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GebiedModule } from './components/gebied/gebied.module';
     BrowserModule,
     EvenementModule,
     GebiedModule,
+    RankingModule,
     HttpClientModule,
     MaterialModule,
     UserModule,

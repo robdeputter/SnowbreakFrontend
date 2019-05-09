@@ -1,7 +1,8 @@
 export class Gebied {
 
+    private _id: Number;
+
     constructor(
-        private _id: Number,
         private _naam: string,
         private _land: string,
         private _contintent: number,
@@ -55,9 +56,35 @@ export class Gebied {
 
 
     static fromJSON(json: any): Gebied {
-        const rec = new Gebied(json.id, json.naam, json.land, json.continent, json.lengteGraad
+        const rec = new Gebied(json.naam, json.land, json.continent, json.lengteGraad
             , json.breedtegraad, json.aantalKmPiste, json.hoogteGebied);
+           rec.id = json.id;
         return rec;
     }
 
+    toJSON(): any {
+        return {
+            naam : this.naam,
+            land : this.land,
+            lengtegraad : this.lengtegraad,
+            breedtegraad : this.breedtegraad,
+            aantalKmPiste : this.aantalKmPiste,
+            hoogteGebied : this.hoogteGebied,
+            continent : this.continent
+        }
+    }
+}
+
+export class GebiedRankingPositie{
+    constructor(private _gebied : Gebied , private _positie : number){}
+
+    get gebied(){return this._gebied;}
+    get positie() {return this._positie;}
+
+    set gebied(gebied : Gebied){this._gebied = gebied;}
+    set positie(positie : number){this._positie = positie;}
+
+    static fromJSON(json : any) : GebiedRankingPositie{
+        return new GebiedRankingPositie(json.gebied, json.positie);
+    }
 }

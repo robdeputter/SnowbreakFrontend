@@ -37,6 +37,10 @@ export class EvenementListComponent implements OnInit {
     this._evenementDataService.addNewEvenement(evenement).subscribe();
   }
 
+  deleteEvenement(evenementId: Number){
+    this._evenementDataService.deleteEvenement(evenementId).subscribe();
+  }
+
   ngOnInit() {
   }
 

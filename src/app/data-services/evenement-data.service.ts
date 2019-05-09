@@ -6,13 +6,16 @@ import { Observable, of } from 'rxjs';
 import {Subject} from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
 import { EvenementDTO } from '../models/evenementDTO.model';
+import { AuthenticationService } from '../components/user/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EvenementDataService {
   public loadingError$ = new Subject<string>();
-  constructor(private http: HttpClient) { }
+  public _evenementId : Number;
+
+  constructor(private http: HttpClient, private _authenticationService:  AuthenticationService) { }
 
   get evenementen$(): Observable<Evenement[]> {
     return this.http.get(`${environment.apiUrl}/Evenement/`).pipe(
@@ -32,6 +35,17 @@ export class EvenementDataService {
   addNewEvenement(evenement : EvenementDTO){
     return this.http.post(`${environment.apiUrl}/Evenement/`, 
       evenement.toJSON());
+  }
+
+  deleteEvenement(evenemenentId: Number) : Observable<Evenement>{
+    return this.http.delete(`${environment.apiUrl}/Evnenement/${evenemenentId}`)
+    .pipe(map(
+      (evenenmentJSON: any): Evenement => Evenement.fromJSON(evenenmentJSON)
+    ));
+  }
+
+  isUserLoggedIn(): boolean {
+    return this._authenticationService.token != null&&this._authenticationService.token != "";
   }
 }
 

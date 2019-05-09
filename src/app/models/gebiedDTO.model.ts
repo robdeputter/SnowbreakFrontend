@@ -41,5 +41,4 @@ export class GebiedDTO {
             continent : this.continent
         }
     }
-
 }

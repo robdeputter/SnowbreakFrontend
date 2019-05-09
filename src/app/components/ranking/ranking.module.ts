@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EvenementComponent } from './evenement.component';
-import { AddEvenementComponent } from './add-evenement/add-evenement.component';
-import { EvenementFilterPipe } from '../../filters/evenement-filter.pipe';
-import { EvenementListComponent } from './evenement-list/evenement-list.component';
 import { MaterialModule } from '../../material/material.module';
 import { RouterModule } from '@angular/router';
+import { RankingComponent } from './ranking.component';
+import { RankingFilterPipe } from 'src/app/filters/ranking-filter.pipe';
+import { RankingListComponent } from './ranking-list/ranking-list.component';
 
 
 
@@ -20,12 +19,11 @@ import { RouterModule } from '@angular/router';
       RouterModule
     ],
     declarations: [
-      EvenementComponent,
-      AddEvenementComponent,
-      EvenementFilterPipe,
-      EvenementListComponent],
+      RankingComponent,
+      RankingFilterPipe,
+      RankingListComponent],
       
       exports: []
   })
 
-export class EvenementModule { }
+export class RankingModule { }

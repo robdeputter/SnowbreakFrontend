@@ -10,14 +10,34 @@ import { Observable } from 'rxjs';
   styleUrls: ['./gebied-detail.component.css']
 })
 export class GebiedDetailComponent implements OnInit {
-  public gebied : Gebied;
-  constructor(private _gebiedDataService : GebiedDataService, private route : ActivatedRoute, private router : Router) {
-    let id = this.router.url.substr(this.router.url.lastIndexOf("/") + 1);
-    console.log(parseInt(id));
-    this._gebiedDataService.getGebied$(parseInt(id)).subscribe(res => this.gebied = res);
-    console.log(this.gebied);
-   }
+  public _id : Number;
+  public _fetchGebied$ : Observable<Gebied>;
+  public _subscription : any;
+
+  constructor(
+    private _gebiedDataService : GebiedDataService,
+    private _route : ActivatedRoute,
+    ) { 
+      this._subscription = this._route.params.subscribe(
+        params => {this._id = +params['id'];
+        });
+        console.log(this._id);
+        this._gebiedDataService._gebiedId = this._id;
+        this._fetchGebied$ = this._gebiedDataService.Gebied$;
+    }
 
   ngOnInit() {
   }
+
+  ngOnDestroy() {
+    this._subscription.unsubscribe();
+    this._gebiedDataService._gebiedId = 0;
+    this._fetchGebied$ = null;
+  }
+
+  get gebied$() : Observable<Gebied>{
+    return this._fetchGebied$;
+  }
+
+
 }

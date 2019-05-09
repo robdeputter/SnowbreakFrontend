@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{ranking.naam}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let gebied of ranking.gebieden" class="gebied">
+        <mat-card  class="gebied">
+          <mat-card-title>#{{gebied.positie}} - {{gebied.gebied.naam}}</mat-card-title>
+          <mat-card-subtitle>{{gebied.gebied.land}}</mat-card-subtitle>
+          <!-- foto gebied -->
+          <!-- kaart gebied -->
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+        
+  
+  
+  
+  
+  
+  
+  
+  
