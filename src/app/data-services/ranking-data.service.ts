@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
 
 import { AuthenticationService } from '../components/user/authentication.service';
-import { Ranking } from '../models/ranking.model';
+import { Ranking, RankingDTO } from '../models/ranking.model';
 import { environment } from 'src/environments/environment.prod';
 import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -34,5 +34,10 @@ export class RankingDataService {
 
   isUserLoggedIn(): boolean {
     return this._authenticationService.token != null&&this._authenticationService.token != "";
+  }
+
+  addNewRanking(ranking : RankingDTO){
+    return this.http.post(`${environment.apiUrl}/Ranking`, 
+      ranking.toJSON());
   }
 }

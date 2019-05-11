@@ -76,15 +76,36 @@ export class Gebied {
 }
 
 export class GebiedRankingPositie{
-    constructor(private _gebied : Gebied , private _positie : number){}
+    constructor(private _gebied : Gebied , private _positie : Number){}
 
     get gebied(){return this._gebied;}
     get positie() {return this._positie;}
 
     set gebied(gebied : Gebied){this._gebied = gebied;}
-    set positie(positie : number){this._positie = positie;}
+    set positie(positie : Number){this._positie = positie;}
 
     static fromJSON(json : any) : GebiedRankingPositie{
         return new GebiedRankingPositie(json.gebied, json.positie);
+    }
+}
+
+export class GebiedRankingPositieDTO{
+    constructor(private _gebiedId: Number, private _positie : Number){ }
+
+    get gebiedId(){return this._gebiedId;}
+    get positie(){return this._positie;}
+
+    set gebiedId(gebiedId : Number){this._gebiedId = gebiedId;}
+    set positie(positie : Number){this._positie = positie;}
+
+    toJSON(): any {
+        return {
+            gebiedId : this.gebiedId,
+            positie : this.positie
+        }
+    }
+
+    static fromJSON(json : any): GebiedRankingPositieDTO{
+        return new GebiedRankingPositieDTO(json.gebiedId, json.positie);
     }
 }

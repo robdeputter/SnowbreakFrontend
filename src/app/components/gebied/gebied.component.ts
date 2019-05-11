@@ -3,7 +3,6 @@ import { Gebied } from 'src/app/models/gebied.model';
 import { Subject, Observable } from 'rxjs';
 import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
-import { GebiedDTO } from 'src/app/models/gebiedDTO.model';
 
 @Component({
   selector: 'app-gebied',
@@ -34,7 +33,7 @@ export class GebiedComponent implements OnInit {
   get evenementen$(): Observable<Gebied[]> {
     return this._fetchGebieden$;
   }
-  addEvenement(gebied : GebiedDTO){
+  addEvenement(gebied : Gebied){
     this._gebiedDataService.addNewGebied(gebied).subscribe();
   }
 

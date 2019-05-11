@@ -1,9 +1,8 @@
 import { Gebied } from './gebied.model';
 
 export class Evenement {
-
+    private _id: Number;
     constructor(
-        private _id: Number,
         private _naam: string,
         private _beschrijving: string,
         private _startDatum: Date,
@@ -31,8 +30,19 @@ export class Evenement {
     set gebied(gebied: Gebied) { this._gebied = gebied; }
 
     static fromJSON(json: any): Evenement {
-        const rec = new Evenement(json.id, json.naam, json.beschrijving, json.startDatum, json.eindDatum,
+        const rec = new Evenement(json.naam, json.beschrijving, json.startDatum, json.eindDatum,
             json.nrOfDays, json.gebied);
+            rec.id = json.id;
         return rec;
+    }
+
+    toJSON(): any {
+        return {
+            naam: this.naam,
+            beschrijving: this.beschrijving,
+            startDatum: this.startdatum,
+            eindDatum: this.einddatum,
+            gebiedId: this.id
+        };
     }
 }

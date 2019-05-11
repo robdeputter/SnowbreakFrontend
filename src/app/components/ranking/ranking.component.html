@@ -5,7 +5,7 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div *ngFor="let gebied of ranking.gebieden" class="gebied">
+      <div *ngFor="let gebied of ranking.gebieden">
         <mat-card  class="gebied">
           <mat-card-title>#{{gebied.positie}} - {{gebied.gebied.naam}}</mat-card-title>
           <mat-card-subtitle>{{gebied.gebied.land}}</mat-card-subtitle>

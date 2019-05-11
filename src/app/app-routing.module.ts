@@ -8,6 +8,7 @@ import { AddGebiedComponent } from './components/gebied/add-gebied/add-gebied.co
 import { AuthGuard } from './components/user/auth.guard';
 import { GebiedDetailComponent } from './components/gebied/gebied-detail/gebied-detail.component';
 import { RankingListComponent } from './components/ranking/ranking-list/ranking-list.component';
+import { AddRankingComponent } from './components/ranking/add-ranking/add-ranking.component';
 
 const appRoutes: Routes = [
   { path: 'evenement-list', component: EvenementListComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   },
   {path: 'evenement-list/gebied-detail/:id', component: GebiedDetailComponent},
   {path: 'ranking-list', component: RankingListComponent},
+  {path: 'add-ranking', component: AddRankingComponent},
   { path: '', redirectTo: 'evenement-list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent}
 ];

@@ -1,0 +1,69 @@
+<mat-card>
+  <mat-card-title>
+    Voeg ranking toe
+  </mat-card-title>
+  <form [formGroup] = "ranking" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput
+      aria-label="naam"
+      placeholder="Naam"
+      type="text"
+      formControlName="naam"
+      required />
+
+      <mat-error
+          *ngIf="ranking.get('naam').errors && ranking.get('naam').touched"
+        >
+          {{ getErrorMessage(ranking.get('naam').errors) }}
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Continent</mat-label>
+      <mat-select required formControlName = "continent" #newContinentId >
+        <mat-option>--</mat-option>
+        <mat-option [value]="0">Noord-Amerika</mat-option>
+        <mat-option [value]="1">Zuid-Amerika</mat-option>
+        <mat-option [value]="2">Europa</mat-option>
+        <mat-option [value]="3">Azië</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <div
+        formArrayName="gebieden"
+        *ngFor="let gebied of gebieden.controls; let i = index"
+      >
+        <div [formGroupName]="i">
+          <mat-card>
+              <mat-label>{{i + 1}}</mat-label>
+              <mat-form-field>
+                  <mat-label>Gebied</mat-label>
+                  <mat-select required formControlName = "gebiedId" #newRankingGebiedId >
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let geb of gebiedenSelectList" [value]="geb.id">
+                      {{geb.naam}} ({{geb.land}})
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+              <div *ngIf="(i + 2) === positie">
+                <mat-card-actions>
+                  <a mat-raised-button (click)="pushToGebieden(newRankingGebiedId)">+</a>
+               </mat-card-actions>
+              </div>
+                
+            
+        </mat-card>
+        </div>
+        
+        <mat-error *ngIf="gebied.errors && gebied.get('naam').touched">
+          {{ getErrorMessage(gebied.errors) }}
+        </mat-error>
+      </div>
+      <br>
+      
+      <button type="submit" [disabled]= "!ranking.valid" mat-raised-button>
+          Voeg ranking toe
+      </button>
+  </form>
+
+</mat-card>

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { RankingComponent } from './ranking.component';
 import { RankingFilterPipe } from 'src/app/filters/ranking-filter.pipe';
 import { RankingListComponent } from './ranking-list/ranking-list.component';
+import { AddRankingComponent } from './add-ranking/add-ranking.component';
 
 
 
@@ -21,7 +22,8 @@ import { RankingListComponent } from './ranking-list/ranking-list.component';
     declarations: [
       RankingComponent,
       RankingFilterPipe,
-      RankingListComponent],
+      RankingListComponent,
+      AddRankingComponent],
       
       exports: []
   })

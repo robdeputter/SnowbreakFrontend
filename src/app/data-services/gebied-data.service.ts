@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Gebied } from '../models/gebied.model';
 import { environment } from 'src/environments/environment.prod';
 import { catchError, tap, map } from 'rxjs/operators';
-import { GebiedDTO } from '../models/gebiedDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +34,7 @@ export class GebiedDataService {
       .pipe(map((rec: any): Gebied => Gebied.fromJSON(rec)));
   }
 
-  addNewGebied(gebied : GebiedDTO){
+  addNewGebied(gebied : Gebied){
     return this.http.post(`${environment.apiUrl}/Gebied/`, 
       gebied.toJSON());
   }
