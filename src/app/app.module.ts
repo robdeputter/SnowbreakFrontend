@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { GebiedModule } from './components/gebied/gebied.module';
 import { RankingModule } from './components/ranking/ranking.module';
+import { AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import { RankingModule } from './components/ranking/ranking.module';
   imports: [
     BrowserModule,
     EvenementModule,
-    GebiedModule,
     RankingModule,
+    GebiedModule,
     HttpClientModule,
     MaterialModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyACVcWm0Ef3RrWceKUBMDAnc9Rs11OjwyY' 
+    })
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

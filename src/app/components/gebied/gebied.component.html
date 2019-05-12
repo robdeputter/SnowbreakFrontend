@@ -1,12 +1,20 @@
 <mat-card>
   <mat-card-header>
       <mat-card-title>
-          {{gebied.naam}} - {{gebied.land}} ({{gebied.continentToString()}})
+          {{gebied.naam}} - {{gebied.land}}
       </mat-card-title>
-      <mat-card-subtitle>{{gebied.lengtegraad}} - {{gebied.breedtegraad}}</mat-card-subtitle>
+     <mat-card-subtitle> {{gebied.continentToString()}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
+      <agm-map class="map" [longitude]="gebied.lengtegraad" [latitude]="gebied.breedtegraad">
+        <agm-marker [longitude]="gebied.lengtegraad" [latitude]="gebied.breedtegraad"></agm-marker>
+      </agm-map>
       <p>Aantal km piste: {{gebied.aantalKmPiste}}</p>
       <p>Hoogte gebied: {{gebied.hoogteGebied}}</p>
   </mat-card-content>
+  <div *ngIf="isUserLoggedIn()">
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="['remove-gebied', gebied.id]">Verwijder</button>
+    </mat-card-actions>
+  </div>
 </mat-card>

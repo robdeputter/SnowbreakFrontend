@@ -36,8 +36,23 @@ export class RankingDataService {
     return this._authenticationService.token != null&&this._authenticationService.token != "";
   }
 
-  addNewRanking(ranking : RankingDTO){
+  addNewRanking(ranking : RankingDTO) : Observable<Ranking>{
     return this.http.post(`${environment.apiUrl}/Ranking`, 
-      ranking.toJSON());
+      ranking.toJSON())
+      .pipe(
+        map(
+          (rankingJSON: any): Ranking => Ranking.fromJSON(rankingJSON)
+        )
+      );;
   }
+
+  deleteRanking(rankingId: Number) : Observable<Ranking>{
+    return this.http.delete(`${environment.apiUrl}/Ranking/${rankingId}`)
+    .pipe(map(
+      (rankingJSON: any): Ranking => Ranking.fromJSON(rankingJSON)
+    ));
+
+  }
+
+  
 }

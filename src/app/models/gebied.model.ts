@@ -6,8 +6,8 @@ export class Gebied {
         private _naam: string,
         private _land: string,
         private _contintent: number,
-        private _lengtegraad: string,
-        private _breedtegraad: string,
+        private _lengtegraad: Number,
+        private _breedtegraad: Number,
         private _aantalKmPiste: Number,
         private _hoogteGebied: Number
 
@@ -28,8 +28,8 @@ export class Gebied {
     set naam(naam: string) { this._naam = naam; }
     set land(land: string) { this._land = land; }
     set continent(continent: number) { this._contintent = continent;}
-    set lengtegraad(lengtegraad: string) { this._lengtegraad = lengtegraad; }
-    set breedtegraad(breedtegraad: string) { this._breedtegraad = breedtegraad; }
+    set lengtegraad(lengtegraad: Number) { this._lengtegraad = lengtegraad; }
+    set breedtegraad(breedtegraad: Number) { this._breedtegraad = breedtegraad; }
     set aantalKmPiste(aantalKmPiste: Number) { this._aantalKmPiste = aantalKmPiste; }
     set hoogteGebied(hoogteGebied: Number) { this._hoogteGebied = hoogteGebied }
 
@@ -57,7 +57,7 @@ export class Gebied {
 
     static fromJSON(json: any): Gebied {
         const rec = new Gebied(json.naam, json.land, json.continent, json.lengteGraad
-            , json.breedtegraad, json.aantalKmPiste, json.hoogteGebied);
+            ,json.breedtegraad, json.aantalKmPiste, json.hoogteGebied);
            rec.id = json.id;
         return rec;
     }

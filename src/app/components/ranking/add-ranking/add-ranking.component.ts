@@ -4,7 +4,19 @@ import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { Gebied, GebiedRankingPositieDTO } from 'src/app/models/gebied.model';
 import { RankingDTO } from 'src/app/models/ranking.model';
 import {  FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+// function validatieVoorUniekeGebieden(gebied: FormGroup): { [key: string]: any } {
+//   var gebiedId: string = gebied.get("gebiedId").value;
+//   var geselecteerdeGebieden : Number[] = this.gebieden();
+//   var duplicaten = geselecteerdeGebieden.filter(id => id === parseInt(gebiedId));
+//   if(duplicaten.length !== 0){
+//     return {gebiedAlGekozen : true};
+//   }
+//   else{
+//     return null;
+//   }
+// }
 
 @Component({
   selector: 'app-add-ranking',
@@ -18,9 +30,12 @@ export class AddRankingComponent implements OnInit {
   public ranking: FormGroup;
   public positie : number = 2;
 
+  public _errorMessage : string;
+
   constructor(private _rankingDataService: RankingDataService,
     private _gebiedDataService : GebiedDataService,
-    private fb : FormBuilder) {
+    private fb : FormBuilder,
+    private _router : Router) {
       _gebiedDataService.gebieden$.subscribe(res => this.gebiedenSelectList = res);
      }
 
@@ -32,33 +47,9 @@ export class AddRankingComponent implements OnInit {
     this.ranking = this.fb.group({
       naam: ["",
       [Validators.required, Validators.minLength(2)]],
-      continent : [null, Validators.required],
       gebieden : this.fb.array([this.createGebiedenDefault()])
     });
 
-    // this.gebieden.valueChanges
-    //   .pipe(
-    //     debounceTime(400),
-    //     distinctUntilChanged()
-    //   )
-    //   .subscribe(gebList => {
-    //     // if the last entry's name is typed, add a new empty one
-    //     // if we're removing an entry's name, and there is an empty one after that one, remove the empty one
-    //     const lastElement = gebList[gebList.length - 1];
-
-    //     if (lastElement.positie > 0 && lastElement.positie <= 10 && !lastElement.gebiedId) {
-    //       this.gebieden.push(this.createGebieden());
-    //     } else if (gebList.length >= 2) {
-    //       const secondToLast = gebList[gebList.length - 2];
-    //       if (
-    //         !lastElement.gebiedId &&
-    //         !lastElement.positie &&
-    //         (!secondToLast.gebiedId || !secondToLast.positie)
-    //       ) {
-    //         this.gebieden.removeAt(this.gebieden.length - 1);
-    //       }
-    //     }
-    //   });
   }
 
   pushToGebieden(rankingGebiedId: HTMLOptionElement){
@@ -73,19 +64,22 @@ export class AddRankingComponent implements OnInit {
   }
 
   getErrorMessage(errors: any){
-    if(errors.required){
-      return 'is verplicht'
-    }
-    else if (errors.minLength){
-      return `heeft minstens ${errors.minlength.requiredLength} (heeft ${errors.minlength.actualLength})`
+    if(errors.gebiedAlGekozen){
+      return "Gebied is al gekozen!";
     }
   }
 
   onSubmit(){
     let gebieden = this.ranking.value.gebieden.map(GebiedRankingPositieDTO.fromJSON);
     this
-    ._rankingDataService.addNewRanking(new RankingDTO(this.ranking.value.naam,
-      this.ranking.value.continent, gebieden)).subscribe();
+    ._rankingDataService.addNewRanking(new RankingDTO(this.ranking.value.naam, gebieden)).subscribe((response) => {
+        if (response){
+          this._router.navigate(['ranking-list']);
+        }
+        else{
+          this._errorMessage = "De ranking kon niet worden toegevoegd!";
+        }
+      });
   }
 
   createGebieden() : FormGroup {
@@ -93,7 +87,9 @@ export class AddRankingComponent implements OnInit {
       {
         gebiedId: [''],
         positie: [this.positie]
-      });
+      }
+      // ,{validator: validatieVoorUniekeGebieden}
+      );
   }
 
   createGebiedenDefault() : FormGroup{
@@ -102,10 +98,7 @@ export class AddRankingComponent implements OnInit {
         gebiedId : [''],
         positie: [1]
       }
+      //,{validator: validatieVoorUniekeGebieden}
     );
   }
-
-  
-
-
 }

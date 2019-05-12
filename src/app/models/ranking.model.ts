@@ -5,40 +5,19 @@ export class Ranking {
     private _id: Number;
     constructor(
         private _naam: string,
-        private _continent: Number,
         private _gebieden: GebiedRankingPositie[]) { }
 
     get id() { return this._id; }
     get naam() { return this._naam; }
-    get continent() { return this._continent; }
     get gebieden() { return this._gebieden; }
 
     set id(id: Number) { this._id = id; }
     set naam(naam: string) { this._naam = naam; }
-    set continent(continent: Number) { this._continent = continent; }
     set gebieden(gebieden: GebiedRankingPositie[]) { this._gebieden = gebieden; }
 
-    continentToString(): string {
-        switch (this.continent) {
-            case 0: {
-                return "Noord-Amerika";
-            }
-            case 1: {
-                return "Zuid-Amerika";
-
-            }
-            case 2: {
-                return "Europa";
-            }
-            case 3: {
-                return "Azië";
-            }
-            default:
-                return "";
-        }
-    }
+    
     static fromJSON(json: any): Ranking {
-        const rec = new Ranking(json.naam, json.continent, json.gebieden.map(GebiedRankingPositie.fromJSON));
+        const rec = new Ranking(json.naam,json.gebieden.map(GebiedRankingPositie.fromJSON));
         rec.id = json.id;
         rec.gebieden.sort((a,b) => a.positie.valueOf() - b.positie.valueOf());
         rec.gebieden.forEach(gebied => console.log(gebied.positie));
@@ -49,21 +28,18 @@ export class Ranking {
 export class RankingDTO{
     constructor(
         private _naam : string,
-        private _continent : Number,
         private _gebieden : GebiedRankingPositieDTO[]){}
 
     get naam(){return this._naam;}
-    get continent(){return this._continent;}
+    //get continent(){return this._continent;}
     get gebieden(){return this._gebieden;}
 
     set naam(naam : string){this._naam = naam;}
-    set continent(continent : Number){this._continent = continent;}
     set gebieden(gebieden : GebiedRankingPositieDTO[]){this._gebieden = gebieden;}
 
     toJSON() : any{
         return{
             naam : this.naam,
-            continent : this.continent,
             gebieden : this.gebieden.map(geb => geb.toJSON())
         }
     }

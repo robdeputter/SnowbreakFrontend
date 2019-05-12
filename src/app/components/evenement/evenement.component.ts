@@ -29,6 +29,10 @@ export class EvenementComponent implements OnInit {
     this._evenementDataService.deleteEvenement(evenementId).subscribe();
   }
 
+  isUserLoggedIn() : boolean{
+    return this._evenementDataService.isUserLoggedIn();
+  }
+
   ngOnInit() {
   }
 

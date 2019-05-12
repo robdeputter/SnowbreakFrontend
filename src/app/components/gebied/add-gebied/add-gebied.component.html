@@ -43,7 +43,7 @@
             </mat-form-field>
             <p>You selected: {{newContinentId.value}}</p>
             <br>
-          <button type="submit" (click)="addGebied(newGebiedNaam,newGebiedLand,newGebiedLengtegraad, newGebiedBreedtegraad,newGebiedAantalKmPiste,newGebiedHoogteGebied, newContinentId)"  [disabled]= "!gebied.valid" mat-raised-button>
+          <button type="submit" [disabled]= "!gebied.valid" mat-raised-button>
               Voeg gebied toe
           </button>
     </form>

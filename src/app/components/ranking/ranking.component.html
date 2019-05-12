@@ -6,14 +6,21 @@
     </mat-card-header>
     <mat-card-content>
       <div *ngFor="let gebied of ranking.gebieden">
-        <mat-card  class="gebied">
-          <mat-card-title>#{{gebied.positie}} - {{gebied.gebied.naam}}</mat-card-title>
-          <mat-card-subtitle>{{gebied.gebied.land}}</mat-card-subtitle>
-          <!-- foto gebied -->
-          <!-- kaart gebied -->
-        </mat-card>
+            <mat-card class = "gebied">
+                <mat-card-title>#{{gebied.positie}} - {{gebied.gebied.naam}}</mat-card-title>
+                <mat-card-subtitle>{{gebied.gebied.land}}</mat-card-subtitle>
+                <!-- kaart gebied -->
+                <mat-card-content>
+                  <agm-map class="map" [longitude]="gebied.gebied.lengtegraad" [latitude]="gebied.gebied.breedtegraad">
+                    <agm-marker [longitude]="gebied.gebied.lengtegraad" [latitude]="gebied.gebied.breedtegraad"></agm-marker>
+                  </agm-map>
+                </mat-card-content>
+            </mat-card>
       </div>
     </mat-card-content>
+    <div *ngIf= "isUserLoggedIn()">
+      <button mat-raised-button [routerLink]="['remove-ranking', ranking.id]">Verwijder</button>
+    </div>
   </mat-card>
         
   

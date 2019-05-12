@@ -10,7 +10,10 @@
       <mat-card-subtitle>Wanneer?</mat-card-subtitle>
       <p>{{evenement.startdatum | date : "dd/MM/yyyy"}} - {{evenement.einddatum | date : "dd/MM/yyyy"}}</p>
       <p>Aantal dagen: {{evenement.nrOfDays}}</p>
-        <a mat-button [routerLink]="['gebied-detail',evenement.gebied.id]">Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}</a>
+      <a mat-button [routerLink]="['gebied-detail',evenement.gebied.id]">Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}</a>
+      <div *ngIf="isUserLoggedIn()">
+        <button mat-raised-button [routerLink]="['remove-evenement', evenement.id]">Verwijder</button>
+      </div>
       
   </mat-card-content>
 </mat-card>

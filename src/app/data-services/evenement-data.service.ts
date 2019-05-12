@@ -7,6 +7,7 @@ import {Subject} from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
 import { EvenementDTO } from '../models/evenementDTO.model';
 import { AuthenticationService } from '../components/user/authentication.service';
+import { AddEvenementComponent } from '../components/evenement/add-evenement/add-evenement.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,13 +33,18 @@ export class EvenementDataService {
     );
   }
 
-  addNewEvenement(evenement : EvenementDTO){
+  addNewEvenement(evenement : EvenementDTO) : Observable<Evenement>{
     return this.http.post(`${environment.apiUrl}/Evenement/`, 
-      evenement.toJSON());
+      evenement.toJSON())
+      .pipe(
+        map(
+          (evenementJSON: any): Evenement => Evenement.fromJSON(evenementJSON)
+        )
+      );
   }
 
   deleteEvenement(evenemenentId: Number) : Observable<Evenement>{
-    return this.http.delete(`${environment.apiUrl}/Evnenement/${evenemenentId}`)
+    return this.http.delete(`${environment.apiUrl}/Evenement/${evenemenentId}`)
     .pipe(map(
       (evenenmentJSON: any): Evenement => Evenement.fromJSON(evenenmentJSON)
     ));

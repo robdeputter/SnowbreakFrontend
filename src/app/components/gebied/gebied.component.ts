@@ -37,6 +37,14 @@ export class GebiedComponent implements OnInit {
     this._gebiedDataService.addNewGebied(gebied).subscribe();
   }
 
+  deleteGebied(gebiedId: Number){
+    this._gebiedDataService.deleteGebied(gebiedId).subscribe();
+  }
+
+  isUserLoggedIn(): boolean {
+    return this._gebiedDataService.isUserLoggedIn();
+  }
+
   ngOnInit() {
   }
 

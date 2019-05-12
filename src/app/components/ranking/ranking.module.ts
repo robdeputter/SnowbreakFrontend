@@ -8,6 +8,9 @@ import { RankingComponent } from './ranking.component';
 import { RankingFilterPipe } from 'src/app/filters/ranking-filter.pipe';
 import { RankingListComponent } from './ranking-list/ranking-list.component';
 import { AddRankingComponent } from './add-ranking/add-ranking.component';
+import { RemoveRankingComponent } from './remove-ranking/remove-ranking.component';
+import { GebiedModule } from '../gebied/gebied.module';
+import { AgmCoreModule} from '@agm/core';
 
 
 
@@ -17,13 +20,19 @@ import { AddRankingComponent } from './add-ranking/add-ranking.component';
       CommonModule,
       ReactiveFormsModule,
       MaterialModule,
-      RouterModule
+      RouterModule,
+      GebiedModule,
+      AgmCoreModule.forRoot({
+        apiKey: "AIzaSyACVcWm0Ef3RrWceKUBMDAnc9Rs11OjwyY"
+      })
     ],
     declarations: [
       RankingComponent,
       RankingFilterPipe,
       RankingListComponent,
-      AddRankingComponent],
+      AddRankingComponent,
+      RemoveRankingComponent
+    ],
       
       exports: []
   })

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Gebied } from '../models/gebied.model';
 import { environment } from 'src/environments/environment.prod';
 import { catchError, tap, map } from 'rxjs/operators';
+import { AuthenticationService } from '../components/user/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class GebiedDataService {
   public loadingError$ = new Subject<string>();
   public _gebiedId : Number;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _authenticationService : AuthenticationService) { }
 
   get gebieden$(): Observable<Gebied[]> {
-    return this.http.get(`${environment.apiUrl}/Gebied/`).pipe(
+    return this.http.get(`${environment.apiUrl}/Gebied`).pipe(
       catchError(error => {
         this.loadingError$.next(error.statusText);
         return of();
@@ -34,8 +35,25 @@ export class GebiedDataService {
       .pipe(map((rec: any): Gebied => Gebied.fromJSON(rec)));
   }
 
-  addNewGebied(gebied : Gebied){
-    return this.http.post(`${environment.apiUrl}/Gebied/`, 
-      gebied.toJSON());
+  addNewGebied(gebied : Gebied) : Observable<Gebied>{
+    return this.http.post(`${environment.apiUrl}/Gebied`, 
+      gebied.toJSON())
+      .pipe(
+        map(
+          (gebiedJSON: any): Gebied => Gebied.fromJSON(gebiedJSON)
+        )
+      );
+  }
+
+
+  isUserLoggedIn(): boolean {
+    return this._authenticationService.token != null&&this._authenticationService.token != "";
+  }
+
+  deleteGebied(gebiedId: Number) : Observable<Gebied>{
+    return this.http.delete(`${environment.apiUrl}/Gebied/${gebiedId}`)
+    .pipe(map(
+      (gebiedJSON: any): Gebied => Gebied.fromJSON(gebiedJSON)
+    ));
   }
 }

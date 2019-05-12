@@ -8,6 +8,7 @@ import { EvenementFilterPipe } from '../../filters/evenement-filter.pipe';
 import { EvenementListComponent } from './evenement-list/evenement-list.component';
 import { MaterialModule } from '../../material/material.module';
 import { RouterModule } from '@angular/router';
+import { RemoveEvenementComponent } from './remove-evenement/remove-evenement.component';
 
 
 
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
       EvenementComponent,
       AddEvenementComponent,
       EvenementFilterPipe,
-      EvenementListComponent],
+      EvenementListComponent,
+      RemoveEvenementComponent],
       
       exports: []
   })

@@ -5,6 +5,7 @@ import { EvenementDataService } from 'src/app/data-services/evenement-data.servi
 import { Gebied } from 'src/app/models/gebied.model';
 import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { EvenementDTO } from 'src/app/models/evenementDTO.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-evenement',
@@ -16,9 +17,12 @@ export class AddEvenementComponent implements OnInit {
   public evenement: FormGroup;
   public gebieden : Gebied[];
 
+  private _errorMessage : string;
+
   constructor(private fb: FormBuilder, 
     private _evenementDataService: EvenementDataService,
-    private _gebiedDataService : GebiedDataService) {
+    private _gebiedDataService : GebiedDataService,
+    private _router : Router) {
       _gebiedDataService.gebieden$.subscribe(res => this.gebieden = res);
    }
 
@@ -45,7 +49,15 @@ export class AddEvenementComponent implements OnInit {
   onSubmit(){
     console.log(this.evenement.value.gebiedId);
     this._evenementDataService.addNewEvenement(new EvenementDTO(this.evenement.value.naam,this.evenement.value.beschrijving, 
-      new Date(this.evenement.value.startdatum),new Date(this.evenement.value.einddatum), this.evenement.value.gebiedId)).subscribe();
+      new Date(this.evenement.value.startdatum),new Date(this.evenement.value.einddatum), this.evenement.value.gebiedId))
+      .subscribe((response) => {
+        if (response){
+          this._router.navigate(["evenement-list"]);
+        }
+        else{
+          this._errorMessage = "Het evenement kon niet worden toegevoegd!";
+        }
+      });
   }
 
   addEvenement(evenementNaam: HTMLInputElement, evenementBeschrijving: HTMLInputElement,
