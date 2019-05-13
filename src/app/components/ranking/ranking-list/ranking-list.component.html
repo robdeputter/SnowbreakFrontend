@@ -8,23 +8,22 @@
       </mat-form-field>  
     </mat-card>
     <div *ngIf="rankings$ as rankings; else loadingOrError">
-        <div
-          fxLayout="row wrap"
-          fxLayout.xs="column"
-          fxLayoutGap="0.5%"
-          fxLayoutAlign="start"
+      <div
+        fxLayout="row wrap"
+        fxLayout.xs="column"
+        fxLayoutGap="0.5%"
+        fxLayoutAlign="start"
+      >
+        <div 
+          class="ranking"
+          *ngFor="let ranking of (rankings | async | rankingFilter: filterRankingNaam)"
+          fxFlex="0 0 80%"
+          fxFlex.xs="100%"
         >
-          <div 
-            class="ranking"
-            *ngFor="let ranking of (rankings | async | rankingFilter : filterRankingNaam)"
-            fxFlex="0 1 75%"
-            fxFlex.xs="100%"
-            
-          >
-              <app-ranking [ranking]= "ranking"></app-ranking>
-          </div>
+          <app-ranking [ranking]= "ranking"></app-ranking>
         </div>
       </div>
+    </div>
       <ng-template #loadingOrError>
         <mat-card>
           <mat-error

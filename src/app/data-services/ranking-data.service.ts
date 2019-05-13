@@ -46,6 +46,12 @@ export class RankingDataService {
       );;
   }
 
+  get Ranking$(): Observable<Ranking> {
+    return this.http
+      .get(`${environment.apiUrl}/Ranking/${this._rankingId}`)
+      .pipe(map((rec: any): Ranking => Ranking.fromJSON(rec)));
+  }
+
   deleteRanking(rankingId: Number) : Observable<Ranking>{
     return this.http.delete(`${environment.apiUrl}/Ranking/${rankingId}`)
     .pipe(map(

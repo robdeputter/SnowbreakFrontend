@@ -33,6 +33,8 @@ export class EvenementComponent implements OnInit {
     return this._evenementDataService.isUserLoggedIn();
   }
 
+  
+
   ngOnInit() {
   }
 

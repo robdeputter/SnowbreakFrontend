@@ -85,7 +85,7 @@ export class GebiedRankingPositie{
     set positie(positie : Number){this._positie = positie;}
 
     static fromJSON(json : any) : GebiedRankingPositie{
-        return new GebiedRankingPositie(json.gebied, json.positie);
+        return new GebiedRankingPositie(Gebied.fromJSON(json.gebied), json.positie);
     }
 }
 

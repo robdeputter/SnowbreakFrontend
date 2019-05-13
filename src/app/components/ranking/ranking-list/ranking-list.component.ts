@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RankingDataService } from 'src/app/data-services/ranking-data.service';
 import { Observable, Subject } from 'rxjs';
 import { Ranking } from 'src/app/models/ranking.model';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
+import { Gebied } from 'src/app/models/gebied.model';
+import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 
 @Component({
   selector: 'app-ranking-list',
@@ -14,8 +16,9 @@ export class RankingListComponent implements OnInit {
   public filterRanking$ = new Subject<string>();
   private _fetchGebieden : Observable<Ranking[]> = this._rankingDataService.rankings$;
 
+
   public loadingError$ = this._rankingDataService.loadingError$;
-  constructor(private _rankingDataService : RankingDataService) {
+  constructor(private _rankingDataService : RankingDataService, private _gebiedDataService : GebiedDataService) {
     this.filterRanking$
       .pipe(
         distinctUntilChanged(),
@@ -34,7 +37,7 @@ export class RankingListComponent implements OnInit {
     console.log(this._fetchGebieden);
     return this._fetchGebieden;
   }
-
+  
   ngOnInit() {
   }
 

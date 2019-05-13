@@ -1,3 +1,7 @@
 .ranking{
     margin: 4px;
 }
+
+.example-stretched-tabs {
+    max-width: 800px;
+  }

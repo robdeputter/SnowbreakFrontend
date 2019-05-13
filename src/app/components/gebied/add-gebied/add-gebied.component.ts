@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { Gebied } from 'src/app/models/gebied.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-gebied',
@@ -11,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class AddGebiedComponent implements OnInit {
   @Output() public newGebied = new EventEmitter<Gebied>();
+  public lat : Number;
+  public long : Number;
+
   public gebied: FormGroup;
   private _errorMessage : string;
   constructor(private fb: FormBuilder,
@@ -22,8 +26,8 @@ export class AddGebiedComponent implements OnInit {
       naam: ["",
       [Validators.required, Validators.minLength(2)]],
       land: [""],
-      lengtegraad: [""],
-      breedtegraad: [""],
+      lengtegraad: [this.long, Validators.min(0.1)],
+      breedtegraad: [this.lat, Validators.min(0.1)],
       aantalKmPiste : [null],
       hoogteGebied : [null],
       continentId: [null]
@@ -39,9 +43,16 @@ export class AddGebiedComponent implements OnInit {
     }
   }
 
+  onMapClicked(event){
+    this.lat = event.coords.lat.toFixed(5);
+    this.long = event.coords.lng.toFixed(5);
+    this.gebied.get("lengtegraad").setValue(this.long);
+    this.gebied.get("breedtegraad").setValue(this.lat);
+  }
+
   onSubmit(){
     this._gebiedDataService.addNewGebied(new Gebied(this.gebied.value.naam,this.gebied.value.land,
-      this.gebied.value.continentId, this.gebied.value.lengtegraad, this.gebied.value.breedtegraad,
+      this.gebied.value.continentId,parseFloat(this.gebied.value.lengtegraad), parseFloat(this.gebied.value.breedtegraad),
       this.gebied.value.aantalKmPiste,
       this.gebied.value.hoogteGebied)).subscribe((response) => {
 

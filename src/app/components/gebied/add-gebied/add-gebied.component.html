@@ -13,13 +13,9 @@
             <input matInput aria-label="Land" placeholder="Land" type="text" formControlName = "land" required #newGebiedLand />
           </mat-form-field>
           <br>
-          <mat-form-field>
-            <input matInput aria-label="Lengtegraad" placeholder="Lengtegraad" type="text" formControlName = "lengtegraad" required #newGebiedLengtegraad />
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput aria-label="Breedtegraad" placeholder="Breedtegraad" type="text" formControlName = "breedtegraad" required #newGebiedBreedtegraad />
-          </mat-form-field>
+          <agm-map class = "map" [longitude]="long" [latitude]="lat" (mapClick)="onMapClicked($event)">
+            <agm-marker [longitude]="long" [latitude]="lat"></agm-marker>
+          </agm-map>
           <br>
           <mat-form-field>
             <input matInput aria-label="AantalKmPiste" placeholder="Aantal km piste" type="number" formControlName = "aantalKmPiste" required #newGebiedAantalKmPiste />

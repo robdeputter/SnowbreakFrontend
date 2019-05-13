@@ -20,7 +20,7 @@ export class Ranking {
         const rec = new Ranking(json.naam,json.gebieden.map(GebiedRankingPositie.fromJSON));
         rec.id = json.id;
         rec.gebieden.sort((a,b) => a.positie.valueOf() - b.positie.valueOf());
-        rec.gebieden.forEach(gebied => console.log(gebied.positie));
+        rec.gebieden.forEach(gebied => console.log(gebied.gebied.lengtegraad));
         return rec;
     }
 }

@@ -21,8 +21,9 @@
     <div
         formArrayName="gebieden"
         *ngFor="let gebied of gebieden.controls; let i = index"
+        
       >
-        <div [formGroupName]="i">
+        <div [formGroupName]="i" class = "gebied">
           <form [formGroup] = "gebied">
               <mat-card>
                   <mat-label>{{i + 1}}</mat-label>
