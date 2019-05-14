@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { GebiedDataService } from 'src/app/data-services/gebied-data.service';
 import { Gebied } from 'src/app/models/gebied.model';
 import { Router } from '@angular/router';
@@ -25,13 +25,24 @@ export class AddGebiedComponent implements OnInit {
     this.gebied = this.fb.group({
       naam: ["",
       [Validators.required, Validators.minLength(2)]],
-      land: [""],
-      lengtegraad: [this.long, Validators.min(0.1)],
-      breedtegraad: [this.lat, Validators.min(0.1)],
-      aantalKmPiste : [null],
-      hoogteGebied : [null],
-      continentId: [null]
-    });
+      land: ["",
+      [Validators.required, Validators.minLength(2)]],
+      lengtegraad: [this.long, Validators.required],
+      breedtegraad: [this.lat, Validators.required] ,
+      aantalKmPiste : [null, [Validators.required, Validators.min(1)]],
+      hoogteGebied : [null, [Validators.required, Validators.min(1)]],
+      continentId: [null, [Validators.required]]
+    }
+    , {validators : this.aangekliktInMap}
+    );
+  }
+
+  aangekliktInMap(control : AbstractControl){
+    
+    if(control.get("lengtegraad").value === null && control.get("breedtegraad") === null){
+      return  {NietAangekliktInMap : true}
+    }
+    return null;
   }
 
   getErrorMessage(errors: any){
@@ -41,6 +52,13 @@ export class AddGebiedComponent implements OnInit {
     else if (errors.minLength){
       return `heeft minstens ${errors.minlength.requiredLength} (heeft ${errors.minlength.actualLength})`
     }
+    else if (errors.NietAangekliktInMap){
+      return "U moet nog een plaats aanduiden op de kaart!";
+    }
+    else if (errors.min){
+      return `moet groter zijn dan 0`;
+    }
+    
   }
 
   onMapClicked(event){
@@ -74,6 +92,4 @@ export class AddGebiedComponent implements OnInit {
      parseFloat(gebiedBreedtegraad.value),parseInt(gebiedAantalKmPiste.value), parseInt(gebiedHoogteGebied.value));
     this.newGebied.emit(gebied);
   }
-
-
 }

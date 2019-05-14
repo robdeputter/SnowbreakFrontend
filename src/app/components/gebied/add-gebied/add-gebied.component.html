@@ -11,18 +11,34 @@
           <br>
           <mat-form-field>
             <input matInput aria-label="Land" placeholder="Land" type="text" formControlName = "land" required #newGebiedLand />
+            <mat-error *ngIf="(gebied).get('land')['errors'] && gebied.get('land').touched">
+              {{ getErrorMessage(gebied.get('land')['errors']) }}
+            </mat-error>
           </mat-form-field>
           <br>
-          <agm-map class = "map" [longitude]="long" [latitude]="lat" (mapClick)="onMapClicked($event)">
-            <agm-marker [longitude]="long" [latitude]="lat"></agm-marker>
-          </agm-map>
+          <div>
+           
+                <mat-hint>Klik in de kaart om het gebied aan te duiden</mat-hint>
+                <br>
+                <agm-map class = "map" [latitude]="55.676098" [longitude]="12.568337" [zoom]="2" (mapClick)="onMapClicked($event)">
+                  <agm-marker [longitude]="long" [latitude]="lat"></agm-marker>
+                </agm-map>
+            
+          </div>
+          
           <br>
           <mat-form-field>
             <input matInput aria-label="AantalKmPiste" placeholder="Aantal km piste" type="number" formControlName = "aantalKmPiste" required #newGebiedAantalKmPiste />
+            <mat-error *ngIf="(gebied).get('aantalKmPiste')['errors'] && gebied.get('aantalKmPiste').touched">
+              {{ getErrorMessage(gebied.get('aantalKmPiste')['errors']) }}
+            </mat-error>
           </mat-form-field>
           <br>
           <mat-form-field>
             <input matInput aria-label="HoogteGebied" placeholder="Hoogte gebied" type="number" formControlName = "hoogteGebied" required #newGebiedHoogteGebied />
+            <mat-error *ngIf="(gebied).get('hoogteGebied')['errors'] && gebied.get('hoogteGebied').touched">
+              {{ getErrorMessage(gebied.get('hoogteGebied')['errors']) }}
+            </mat-error>
           </mat-form-field>
           <br>
 
@@ -36,8 +52,14 @@
                 <mat-option [value]="3">Azië</mat-option>
                 
               </mat-select>
+              <mat-error *ngIf="(gebied).get('continentId')['errors'] && gebied.get('continentId').touched">
+                {{ getErrorMessage(gebied.get('continentId')['errors']) }}
+              </mat-error>
             </mat-form-field>
-            <p>You selected: {{newContinentId.value}}</p>
+            <br>
+            <mat-error *ngIf="gebied.errors && (gebied.get('lengtegraad').touched || gebied.get('breedtegraad').touched)">
+              {{ getErrorMessage(gebied.errors) }}
+            </mat-error>
             <br>
           <button type="submit" [disabled]= "!gebied.valid" mat-raised-button>
               Voeg gebied toe

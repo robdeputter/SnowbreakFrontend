@@ -11,19 +11,31 @@
           <br>
           <mat-form-field>
             <input matInput aria-label="Beschrijving" placeholder="Beschrijving" type="text" formControlName = "beschrijving" required #newEvenementBeschrijving />
+            <mat-error *ngIf="(evenement).get('beschrijving')['errors'] && evenement.get('beschrijving').touched">
+              {{ getErrorMessage(evenement.get('beschrijving')['errors']) }}
+            </mat-error>
           </mat-form-field>
           <br>
-          <mat-form-field>
-            <input matInput aria-label="Startdatum" [matDatepicker]="pickerStartdatum" placeholder="Startdatum" formControlName = "startdatum" required #newEvenementStartdatum>
-            <mat-datepicker-toggle matSuffix [for]="pickerStartdatum"></mat-datepicker-toggle>
-            <mat-datepicker #pickerStartdatum></mat-datepicker>
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput aria-label="Einddatum" [matDatepicker]="pickerEinddatum" placeholder="Einddatum" formControlName = "einddatum" required #newEvenementEinddatum>
-            <mat-datepicker-toggle matSuffix [for]="pickerEinddatum"></mat-datepicker-toggle>
-            <mat-datepicker #pickerEinddatum></mat-datepicker>
-          </mat-form-field>
+         
+            <mat-form-field>
+              <input matInput aria-label="Startdatum" [matDatepicker]="pickerStartdatum" placeholder="Startdatum" formControlName = "startdatum" required #newEvenementStartdatum>
+              <mat-datepicker-toggle matSuffix [for]="pickerStartdatum"></mat-datepicker-toggle>
+              <mat-datepicker #pickerStartdatum></mat-datepicker>
+            <mat-error
+              *ngIf="(evenement).get('startdatum')['errors'] && evenement.get('startdatum').touched">
+              {{getErrorMessage(evenement.get('startdatum')['errors'])}}
+            </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input matInput aria-label="Einddatum" [matDatepicker]="pickerEinddatum" placeholder="Einddatum" formControlName = "einddatum" required #newEvenementEinddatum>
+              <mat-datepicker-toggle matSuffix [for]="pickerEinddatum"></mat-datepicker-toggle>
+              <mat-datepicker #pickerEinddatum></mat-datepicker>
+              <mat-error
+              *ngIf="(evenement).get('einddatum')['errors'] && evenement.get('einddatum').touched">
+              {{getErrorMessage(evenement.get('einddatum')['errors'])}}
+            </mat-error>
+            </mat-form-field>
           <br>
           <mat-form-field>
               <mat-label>Gebied</mat-label>
@@ -33,9 +45,14 @@
                   {{gebied.naam}} ({{gebied.land}})
                 </mat-option>
               </mat-select>
+              <mat-error *ngIf="(evenement).get('gebiedId')['errors'] && evenement.get('gebiedId').touched">
+                {{ getErrorMessage(evenement.get('gebiedId')['errors']) }}
+              </mat-error>
             </mat-form-field>
-            <p>You selected: {{newEvenementGebiedId.value}}</p>
             <br>
+            <mat-error *ngIf="evenement.errors && (evenement.get('startdatum').touched || evenement.get('einddatum').touched)">
+              {{ getErrorMessage(evenement.errors) }}
+            </mat-error>
           <button type="submit" (click)="addEvenement(newEvenementNaam,newEvenementBeschrijving,newEvenementStartdatum, newEvenementEinddatum, newEvenementGebiedId)"  [disabled]= "!evenement.valid" mat-raised-button>
               Voeg evenement toe
           </button>

@@ -21,7 +21,6 @@
     <div
         formArrayName="gebieden"
         *ngFor="let gebied of gebieden.controls; let i = index"
-        
       >
         <div [formGroupName]="i" class = "gebied">
           <form [formGroup] = "gebied">
@@ -41,18 +40,11 @@
                       <button mat-raised-button [disabled]="!gebied.valid" (click)="pushToGebieden(newRankingGebiedId)">+</button>
                    </mat-card-actions>
                   </div>
-                    
-            </mat-card>
+              </mat-card>
           </form>
-          
         </div>
-        
-        <mat-error *ngIf="_errorMessage !== null">
-          {{_errorMessage}}
-        </mat-error>
       </div>
       <br>
-      
       <button type="submit" [disabled]= "!ranking.valid" mat-raised-button>
           Voeg ranking toe
       </button>
