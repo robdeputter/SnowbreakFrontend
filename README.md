@@ -4,6 +4,7 @@ Snowbreak is een webapplicatie dat de mogelijkheid biedt om een overzicht te kri
 
 ## Inloggegevens
 Email: web4@hogent.be
+
 Wachtwoord: P@ssword1111
 
 ## Development server
