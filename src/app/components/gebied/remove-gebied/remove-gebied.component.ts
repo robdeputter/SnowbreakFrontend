@@ -33,6 +33,7 @@ export class RemoveGebiedComponent implements OnInit {
         .subscribe((response) => {
           if (response) {
             this._router.navigate(['gebied-list']);
+            
           } else {
             this._errorMessage = 'Kon het gebied niet verwijderen';
           }
