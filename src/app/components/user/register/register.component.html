@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="login-main">
-  <mat-card>
+  <mat-card class="registerScherm">
     <form [formGroup]="user" (ngSubmit)="onSubmit()">
       <mat-card-header>
         <mat-card-title>Register</mat-card-title>
@@ -13,6 +13,7 @@
               aria-label="first name"
               data-cy="register-firstname"
               formControlName="firstname"
+              required
             />
             <mat-error
               *ngIf="
@@ -29,6 +30,7 @@
               aria-label="last name"
               data-cy="register-lastname"
               formControlName="lastname"
+              required
             />
             <mat-error
               *ngIf="
@@ -46,6 +48,7 @@
             aria-label="email"
             data-cy="register-email"
             formControlName="email"
+            required
           />
           <mat-error
             *ngIf="user.get('email').errors && user.get('email').touched"
@@ -58,10 +61,11 @@
             <input
               type="password"
               matInput
-              placeholder="Paswoord"
+              placeholder="Wachtwoord"
               aria-label="password"
               data-cy="register-password"
               formControlName="password"
+              required
             />
             <mat-error
               *ngIf="
@@ -80,10 +84,11 @@
             <input
               type="password"
               matInput
-              placeholder="Bevestig pasword"
+              placeholder="Bevestig wachtwoord"
               aria-label="confirm password"
               data-cy="register-confirm-password"
               formControlName="confirmPassword"
+              required
             />
             <mat-error
               *ngIf="

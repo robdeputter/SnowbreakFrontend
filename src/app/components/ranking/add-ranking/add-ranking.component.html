@@ -30,8 +30,8 @@
       >
         <div [formGroupName]="i" class = "gebied">
           <form [formGroup] = "gebied">
-              <mat-card fxLayoutGap = "3%">
-                <div>
+              <mat-card fxLayoutGap = "4%">
+                <div fxFlex="0 1 3%">
                     <p>{{i + 1}}</p>
                 </div>
                   
@@ -45,9 +45,9 @@
                       </mat-select>
                   </mat-form-field>
                   <br>
-                  <div *ngIf="(i + 2) === positie && positie <= 10">
+                  <div *ngIf="(i + 2) === positie && positie <= 10" >
                     <mat-card-actions>
-                      <button mat-raised-button [disabled]="!gebied.valid" (click)="pushToGebieden(newRankingGebiedId)">+</button>
+                      <button  mat-raised-button [disabled]="!gebied.valid" (click)="pushToGebieden(newRankingGebiedId)">+</button>
                    </mat-card-actions>
                   </div>
               </mat-card>
