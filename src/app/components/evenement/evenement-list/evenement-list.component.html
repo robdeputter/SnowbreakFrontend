@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutGap="2%">
-<mat-card>
+<mat-card class="filter">
   <mat-card-title>Filter evenementen</mat-card-title>
   <mat-form-field>
     <input matInput (keyup)='filterEvenement$.next($event.target.value)' 
@@ -7,12 +7,17 @@
       placeholder='filter evenementnaam'>
   </mat-form-field>  
 </mat-card>
-<div *ngIf="evenementen$ as evenementen; else loadingOrError">
+
+<div class="addButton" *ngIf="isUserLogedIn()">
+    <button mat-raised-button [routerLink]="['../add-evenement']" ><mat-icon>add</mat-icon></button>
+</div>
+
+<div *ngIf="evenementen$ as evenementen; else loadingOrError" >
     <div
       fxLayout="row wrap"
       fxLayout.xs="column"
       fxLayoutGap="0.5%"
-      fxLayoutAlign="start"
+      fxLayoutAlign="center center"
     >
       <div 
         class="evenement"
@@ -24,6 +29,7 @@
       </div>
     </div>
   </div>
+  
   <ng-template #loadingOrError>
     <mat-card>
       <mat-error

@@ -26,3 +26,6 @@
   border-color: white;
   margin: 3px;
 }
+.toolbar-flex {
+  flex: 1 0.5 auto;
+}

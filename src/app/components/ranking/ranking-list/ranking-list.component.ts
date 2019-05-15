@@ -37,6 +37,10 @@ export class RankingListComponent implements OnInit {
     console.log(this._fetchGebieden);
     return this._fetchGebieden;
   }
+
+  isUserLogedIn(): boolean{
+    return this._rankingDataService.isUserLoggedIn();
+  }
   
   ngOnInit() {
   }

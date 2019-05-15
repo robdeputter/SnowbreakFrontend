@@ -4,4 +4,13 @@
 
 .example-stretched-tabs {
     max-width: 800px;
-  }
+}
+
+.filter{
+    margin: 5px;
+    margin-bottom: 0px;
+}
+
+.addButton{
+    margin: 0 auto;
+}

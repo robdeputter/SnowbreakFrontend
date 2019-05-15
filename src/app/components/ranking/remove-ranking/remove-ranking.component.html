@@ -1,12 +1,14 @@
-<div>
+<div fxLayoutAlign="center center">
+  <div fxFlex = "0 1 70%"class = "removeCard">
     <mat-card>
         <mat-card-title>Weet u zeker dat u de ranking wilt verwijderen?</mat-card-title>
         <div *ngIf="getErrorMessage() !== null">
           <mat-error>{{getErrorMessage()}}</mat-error>
         </div>
         <mat-action-list>
-          <button mat-raised-button [routerLink]="['../..']" >Annuleer</button>
-          <button mat-raised-button (click)="onSubmit()">Verwijder</button>
+          <button  class="matButton" mat-raised-button [routerLink]="['../..']" >Annuleer</button>
+          <button  class="matButton" mat-raised-button (click)="onSubmit()">Verwijder</button>
         </mat-action-list>
     </mat-card>
   </div>
+</div>

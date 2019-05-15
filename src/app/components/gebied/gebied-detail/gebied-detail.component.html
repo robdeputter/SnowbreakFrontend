@@ -1,8 +1,8 @@
 <div *ngIf="(gebied$ | async) as gebied">
   <div class= "container"
-    
+  fxLayoutAlign="center center"
   >
-      <mat-card fxFlex= "0 1 80%" class = "gebied">
+      <mat-card fxFlex= "0 1 80%" class = "gebied" >
           <mat-card-header>
             <mat-card-title>{{gebied.naam}}</mat-card-title>
             <mat-card-subtitle>{{gebied.land}}</mat-card-subtitle>
@@ -17,7 +17,7 @@
           </mat-card-content>
 
           <mat-card-actions>
-            <button mat-raised-button [routerLink]="['../..']">Terug</button>
+            <button mat-raised-button [routerLink]="['../..']"><mat-icon>arrow_back</mat-icon></button>
           </mat-card-actions>
       </mat-card>
     </div>

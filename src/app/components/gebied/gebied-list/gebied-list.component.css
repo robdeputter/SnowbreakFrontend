@@ -1,3 +1,12 @@
 .evenement{
     margin:5px;
 }
+
+.filter{
+    margin: 5px;
+    margin-bottom: 0px;
+}
+
+.addButton{
+    margin: 0 auto;
+}

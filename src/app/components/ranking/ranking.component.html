@@ -19,7 +19,7 @@
       </div>
     </mat-card-content>
     <div *ngIf= "isUserLoggedIn()">
-      <button mat-raised-button [routerLink]="['remove-ranking', ranking.id]">Verwijder</button>
+      <button mat-raised-button [routerLink]="['remove-ranking', ranking.id]"><mat-icon>delete</mat-icon></button>
     </div>
   </mat-card>
         

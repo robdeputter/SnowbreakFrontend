@@ -13,8 +13,6 @@
       <p>Hoogte gebied: {{gebied.hoogteGebied}}</p>
   </mat-card-content>
   <div *ngIf="isUserLoggedIn()">
-    <mat-card-actions>
-      <button mat-raised-button [routerLink]="['remove-gebied', gebied.id]">Verwijder</button>
-    </mat-card-actions>
+      <button mat-raised-button [routerLink]="['remove-gebied', gebied.id]"><mat-icon>delete</mat-icon></button>
   </div>
 </mat-card>

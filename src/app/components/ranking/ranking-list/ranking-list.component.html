@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutGap="2%">
-    <mat-card>
+    <mat-card class = "filter">
       <mat-card-title>Filter rankings</mat-card-title>
       <mat-form-field>
         <input matInput (keyup)='filterRanking$.next($event.target.value)' 
@@ -7,12 +7,15 @@
           placeholder='filter rankingnaam'>
       </mat-form-field>  
     </mat-card>
+    <div class="addButton" *ngIf="isUserLogedIn()">
+        <button mat-raised-button [routerLink]="['../add-ranking']" ><mat-icon>add</mat-icon></button>
+    </div>
     <div *ngIf="rankings$ as rankings; else loadingOrError">
       <div
         fxLayout="row wrap"
         fxLayout.xs="column"
         fxLayoutGap="0.5%"
-        fxLayoutAlign="start"
+        fxLayoutAlign="center center"
       >
         <div 
           class="ranking"

@@ -3,3 +3,16 @@
     align-content: center;
     align-items: center;
 }
+
+.filter{
+    margin: 5px;
+    margin-bottom: 0px;
+}
+
+.addButton{
+    margin: 0 auto;
+}
+
+.toolbar-flex {
+    flex: 1 0.5 auto;
+}

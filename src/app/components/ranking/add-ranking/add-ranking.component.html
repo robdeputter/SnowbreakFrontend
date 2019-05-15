@@ -1,8 +1,12 @@
+<div  fxLayoutAlign="center center" class="addRanking">
+<div fxFlex="0 0 50%">
 <mat-card>
   <mat-card-title>
     Voeg ranking toe
   </mat-card-title>
+  <mat-card-content>
   <form [formGroup] = "ranking" (ngSubmit)="onSubmit()">
+      
     <mat-form-field>
       <input matInput
       aria-label="naam"
@@ -16,17 +20,22 @@
         >
           {{ getErrorMessage(ranking.get('naam').errors) }}
       </mat-error>
+    
     </mat-form-field>
-    <br>
+   
+   
     <div
         formArrayName="gebieden"
         *ngFor="let gebied of gebieden.controls; let i = index"
       >
         <div [formGroupName]="i" class = "gebied">
           <form [formGroup] = "gebied">
-              <mat-card>
-                  <mat-label>{{i + 1}}</mat-label>
-                  <mat-form-field>
+              <mat-card fxLayoutGap = "3%">
+                <div>
+                    <p>{{i + 1}}</p>
+                </div>
+                  
+                  <mat-form-field fxFlex = "0 1 90%" >
                       <mat-label>Gebied</mat-label>
                       <mat-select  required formControlName = "gebiedId" #newRankingGebiedId >
                         <mat-option>--</mat-option>
@@ -35,6 +44,7 @@
                         </mat-option>
                       </mat-select>
                   </mat-form-field>
+                  <br>
                   <div *ngIf="(i + 2) === positie && positie <= 10">
                     <mat-card-actions>
                       <button mat-raised-button [disabled]="!gebied.valid" (click)="pushToGebieden(newRankingGebiedId)">+</button>
@@ -44,10 +54,15 @@
           </form>
         </div>
       </div>
-      <br>
+    
+      <p>
       <button type="submit" [disabled]= "!ranking.valid" mat-raised-button>
           Voeg ranking toe
       </button>
+      </p>
+    
   </form>
-
+</mat-card-content>
 </mat-card>
+</div>
+</div>

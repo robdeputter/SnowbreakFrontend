@@ -11,13 +11,12 @@
       <p>{{evenement.startdatum | date : "dd/MM/yyyy"}} - {{evenement.einddatum | date : "dd/MM/yyyy"}}</p>
       <p>Aantal dagen: {{evenement.nrOfDays}}</p>
       <mat-action-list>
-        <a mat-raised-button [routerLink]="['gebied-detail',evenement.gebied.id]">Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}</a>
-      <a mat-raised-button href="http://www.google.com/calendar/render?action=TEMPLATE&text={{evenement.naam}}&details={{evenement.beschrijving}}&dates={{evenement.startdatum | date: 'yyyyMMdd'}}/{{evenement.einddatum | date: 'yyyyMMdd'}}&location={{evenement.gebied.naam}}"
+        <a class="matButton" mat-raised-button [routerLink]="['gebied-detail',evenement.gebied.id]">Gebied: {{evenement.gebied.naam}} - {{evenement.gebied.land}}  <mat-icon>place</mat-icon></a>
+        <a class="matButton" mat-raised-button href="http://www.google.com/calendar/render?action=TEMPLATE&text={{evenement.naam}}&details={{evenement.beschrijving}}&dates={{evenement.startdatum | date: 'yyyyMMdd'}}/{{evenement.einddatum | date: 'yyyyMMdd'}}&location={{evenement.gebied.naam}}"
       target="_blank"
-target="_blank" rel="nofollow">Add to my calendar</a>
-      <div *ngIf="isUserLoggedIn()">
-        <button mat-raised-button [routerLink]="['remove-evenement', evenement.id]">Verwijder</button>
-      </div>
+target="_blank" rel="nofollow">Voeg toe aan kalender    <mat-icon>calendar_today</mat-icon></a>
+        
+        <button *ngIf="isUserLoggedIn()" class="matButton" mat-raised-button [routerLink]="['remove-evenement', evenement.id]"><mat-icon>delete</mat-icon></button>
       </mat-action-list>
   </mat-card-content>
 </mat-card>
