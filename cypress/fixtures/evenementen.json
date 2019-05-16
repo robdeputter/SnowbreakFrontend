@@ -1,0 +1,92 @@
+[
+    {
+      "id": 1,
+      "naam": "9nines AUDI",
+      "beschrijving": "Jaarlijks evenement voor snowboarders en skiërs",
+      "startDatum": "2020-04-22T00:00:00",
+      "eindDatum": "2020-04-27T00:00:00",
+      "nrOfDays": 5,
+      "gebied": {
+        "id": 14,
+        "naam": "Sölden",
+        "land": "Oostenrijk",
+        "lengteGraad": 11.0076232,
+        "breedtegraad": 46.9654937,
+        "aantalKmPiste": 144,
+        "hoogteGebied": 3244,
+        "continent": 2
+      }
+    },
+    {
+      "id": 2,
+      "naam": "World ski and snowboard festival 2019",
+      "beschrijving": "Het grootste wintersport en muziekfestival van Noord-Amerika!",
+      "startDatum": "2020-04-10T00:00:00",
+      "eindDatum": "2020-04-14T00:00:00",
+      "nrOfDays": 4,
+      "gebied": {
+        "id": 12,
+        "naam": "Whistler",
+        "land": "Canada",
+        "lengteGraad": -122.957359,
+        "breedtegraad": 50.116322,
+        "aantalKmPiste": 200,
+        "hoogteGebied": 670,
+        "continent": 0
+      }
+    },
+    {
+      "id": 3,
+      "naam": "Red Bull Ragnarok",
+      "beschrijving": "The world’s biggest Snow-Kite Race",
+      "startDatum": "2020-03-04T00:00:00",
+      "eindDatum": "2020-04-07T00:00:00",
+      "nrOfDays": 34,
+      "gebied": {
+        "id": 11,
+        "naam": "Haugastøl",
+        "land": "Noorwegen",
+        "lengteGraad": 7.867799,
+        "breedtegraad": 60.511639,
+        "aantalKmPiste": 50,
+        "hoogteGebied": 592,
+        "continent": 2
+      }
+    },
+    {
+      "id": 4,
+      "naam": "2022 Winter Olympics",
+      "beschrijving": "The 2022 Winter Olympics, also known as XXIV Olympic Winter Games will be the 24th winter multi-sports event by IOC.",
+      "startDatum": "2022-02-04T00:00:00",
+      "eindDatum": "2022-02-20T00:00:00",
+      "nrOfDays": 16,
+      "gebied": {
+        "id": 10,
+        "naam": "Beijing",
+        "land": "China",
+        "lengteGraad": 116.363625,
+        "breedtegraad": 39.913818,
+        "aantalKmPiste": 50,
+        "hoogteGebied": 820,
+        "continent": 3
+      }
+    },
+    {
+      "id": 5,
+      "naam": "The Brits 2019",
+      "beschrijving": "The BRITS – Muziek & Winter Sportfestival met de Britse Snowboard en Freeski Championships",
+      "startDatum": "2020-03-31T00:00:00",
+      "eindDatum": "2020-04-07T00:00:00",
+      "nrOfDays": 7,
+      "gebied": {
+        "id": 13,
+        "naam": "Laax",
+        "land": "Zwitserland",
+        "lengteGraad": 9.26511,
+        "breedtegraad": 46.82393,
+        "aantalKmPiste": 188,
+        "hoogteGebied": 1016,
+        "continent": 2
+      }
+    }
+]

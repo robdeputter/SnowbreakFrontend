@@ -1,0 +1,138 @@
+[
+    {
+      "id": 1,
+      "naam": "Top 10 Europa",
+      "gebieden": [
+        {
+          "positie": 10,
+          "gebied": {
+            "id": 1,
+            "naam": "Val Gardena",
+            "land": "Italië",
+            "lengteGraad": 11.724774,
+            "breedtegraad": 46.57059,
+            "aantalKmPiste": 175,
+            "hoogteGebied": 2518,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 9,
+          "gebied": {
+            "id": 2,
+            "naam": "Les Quatre Vallées",
+            "land": "Frankrijk",
+            "lengteGraad": 6.131787,
+            "breedtegraad": 45.914507,
+            "aantalKmPiste": 412,
+            "hoogteGebied": 3330,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 8,
+          "gebied": {
+            "id": 3,
+            "naam": "Breuil-Cervinia",
+            "land": "Italië",
+            "lengteGraad": 7.629142,
+            "breedtegraad": 45.933559,
+            "aantalKmPiste": 322,
+            "hoogteGebied": 3899,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 7,
+          "gebied": {
+            "id": 4,
+            "naam": "Hochzillertal - Hochfügen",
+            "land": "Oostenrijk",
+            "lengteGraad": 11.873215,
+            "breedtegraad": 47.289957,
+            "aantalKmPiste": 85,
+            "hoogteGebied": 2378,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 6,
+          "gebied": {
+            "id": 5,
+            "naam": "Serfaus - Fiss - Ladis",
+            "land": "Oostenrijk",
+            "lengteGraad": 10.607579,
+            "breedtegraad": 47.038905,
+            "aantalKmPiste": 198,
+            "hoogteGebied": 2820,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 4,
+          "gebied": {
+            "id": 6,
+            "naam": "Les Trois Vallées",
+            "land": "Frankrijk",
+            "lengteGraad": 6.525255,
+            "breedtegraad": 45.484036,
+            "aantalKmPiste": 600,
+            "hoogteGebied": 3230,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 5,
+          "gebied": {
+            "id": 7,
+            "naam": "Silvretta Arena Ischgl - Samnaun",
+            "land": "Oostenrijk",
+            "lengteGraad": 10.288,
+            "breedtegraad": 47.010023,
+            "aantalKmPiste": 239,
+            "hoogteGebied": 2872,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 2,
+          "gebied": {
+            "id": 8,
+            "naam": "Val d'Isère",
+            "land": "Frankrijk",
+            "lengteGraad": 6.979605,
+            "breedtegraad": 45.446912,
+            "aantalKmPiste": 300,
+            "hoogteGebied": 3456,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 1,
+          "gebied": {
+            "id": 9,
+            "naam": "Brixental",
+            "land": "Oostenrijk",
+            "lengteGraad": 12.190926,
+            "breedtegraad": 47.503113,
+            "aantalKmPiste": 284,
+            "hoogteGebied": 1860,
+            "continent": 2
+          }
+        },
+        {
+          "positie": 3,
+          "gebied": {
+            "id": 13,
+            "naam": "Laax",
+            "land": "Zwitserland",
+            "lengteGraad": 9.26511,
+            "breedtegraad": 46.82393,
+            "aantalKmPiste": 188,
+            "hoogteGebied": 1016,
+            "continent": 2
+          }
+        }
+      ]
+    }
+]

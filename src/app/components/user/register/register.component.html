@@ -7,11 +7,12 @@
       <mat-card-content fxLayout="column">
         <span fxLayout="row" fxLayoutGap="2%">
           <mat-form-field>
-            <input
+            <input 
+
               matInput
               placeholder="Voornaam"
               aria-label="first name"
-              data-cy="register-firstname"
+              data-cy="voornaam"
               formControlName="firstname"
               required
             />
@@ -25,10 +26,11 @@
           </mat-form-field>
           <mat-form-field>
             <input
+            
               matInput
               placeholder="Naam"
               aria-label="last name"
-              data-cy="register-lastname"
+              data-cy="naam"
               formControlName="lastname"
               required
             />
@@ -43,10 +45,11 @@
         </span>
         <mat-form-field>
           <input
+          data-cy="email"
             matInput
             placeholder="Email"
             aria-label="email"
-            data-cy="register-email"
+            
             formControlName="email"
             required
           />
@@ -59,11 +62,12 @@
         <span fxLayout="column" formGroupName="passwordGroup">
           <mat-form-field>
             <input
+            data-cy="wachtwoord"
               type="password"
               matInput
               placeholder="Wachtwoord"
               aria-label="password"
-              data-cy="register-password"
+              
               formControlName="password"
               required
             />
@@ -82,11 +86,12 @@
           </mat-form-field>
           <mat-form-field>
             <input
+            data-cy="herhaalWachtwoord"
               type="password"
               matInput
               placeholder="Bevestig wachtwoord"
               aria-label="confirm password"
-              data-cy="register-confirm-password"
+              
               formControlName="confirmPassword"
               required
             />

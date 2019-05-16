@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { EvenementListComponent } from './components/evenement/evenement-list/evenement-list.component';
 import { AddEvenementComponent } from './components/evenement/add-evenement/add-evenement.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -61,7 +61,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,
+      {preloadingStrategy: PreloadAllModules})
   ],
 
   exports: [
